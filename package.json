@@ -1,0 +1,20 @@
+{
+  "name": "audiorecorder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/server/serve.js",
+  "type": "module",
+  "scripts": {
+    "start": "http-server ./src -b",
+    "serve": "node --env-file=.env .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ffmpeg/ffmpeg": "^0.12.10",
+    "audiorecorder": "file:",
+    "express": "^4.21.0",
+    "ws": "^8.18.0"
+  }
+}
