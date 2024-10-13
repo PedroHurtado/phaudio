@@ -15,6 +15,7 @@ export class Context {
     await audioContext.audioWorklet.addModule(
       AudioRecorder.env.url_worker_audio
     );
+
     return new AudioWorkletNode(audioContext, "audio-processor", {
       processorOptions: {
         options: AudioRecorder.env.options,
@@ -29,6 +30,7 @@ export class Context {
     highPassFilter.type = 'highpass';
     highPassFilter.frequency.value = 400;    
 
+    
     const procesor = await this.createWorkletNode(audioContext);  
     //source.connect(highPassFilter).connect(procesor);    
     source.connect(procesor)
