@@ -1,7 +1,7 @@
 import { Context } from "./context.js";
 import { fetcher_worker } from "./fetcher-worker.js";
 import { Message } from "../common/message.js";
-import { serialize } from "./serializer.js";
+import { deserialize, serialize } from "./serializer.js";
 import wavfile from "./wavfile.js";
 const defaultOptions = {
   options: {},
@@ -79,13 +79,17 @@ const defaultOptions = {
 };*/
 
 const createContext = function (buffer) {
+  
   const start = performance.now();
   const arraybuffer = wavfile.getFile(buffer);
+  const data = serialize({id:1},new Int16Array(arraybuffer))
+  const {json,file} = deserialize(data)
+  console.log(json)  
   const end = performance.now();
-
   console.log(`start:${start} end:${end} dif:${end-start}`)
 
-  const blob = new Blob([arraybuffer], { type: "audio/wav" });
+
+  const blob = new Blob([file.buffer], { type: "audio/wav" });
   const url = URL.createObjectURL(blob);
   document.createElement("audio");
   const audio = document.createElement("audio");
