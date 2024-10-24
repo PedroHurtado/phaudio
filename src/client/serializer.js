@@ -26,7 +26,7 @@ export function serialize(json, int16Array) {
     return buffer;
 }
 
-export function deserialize(buffer) {
+export function deserialize(buffer) {    
     const view = new DataView(buffer);
 
     // Leer la longitud del JSON (primeros 2 bytes)

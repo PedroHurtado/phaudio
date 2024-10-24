@@ -46,8 +46,9 @@ wss.on('connection', (ws) => {
 
   // Escuchar mensajes del cliente
   ws.on('message', async (message) => {
-    const {boject,binaryData} = deserialize(message)    
-    const response = await transcribe(binaryData)    
+    const arrayBuffer = message.buffer.slice(message.byteOffset, message.byteOffset + message.byteLength);
+    const {json,file} = deserialize(arrayBuffer)    
+    const response = await transcribe(file)    
     const encoder = new TextEncoder()    
     ws.send(encoder.encode(response),{binary:true})    
   });

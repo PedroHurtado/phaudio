@@ -87,7 +87,7 @@ const createContext = function (buffer) {
   console.log(json)  
   const end = performance.now();
   console.log(`start:${start} end:${end} dif:${end-start}`)
-
+  AudioRecorder.env.socket.send(data);
 
   const blob = new Blob([file.buffer], { type: "audio/wav" });
   const url = URL.createObjectURL(blob);
