@@ -13,7 +13,7 @@ import cors from 'cors'
 const corsOptions={
   origin: '*', 
   methods: ['GET', 'POST', 'HEAD'],     
-  exposedHeaders: ['Server-Date'], 
+  exposedHeaders: ['server-date'], 
 }
 // Inicializa la aplicación Express
 const app = express();
@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
 });
 
 app.head('/timer', (req,res)=>{
-  res.set('Server-Date', Date.now());
+  res.set('server-date', Date.now());
   res.end();
 })
 
