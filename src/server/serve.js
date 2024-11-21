@@ -20,6 +20,11 @@ app.get('/', (req, res) => {
 	res.senfile("index.html");
 });
 
+app.head('/timer', (req,res)=>{
+  res.set('Server-Date', Date.now());
+  res.end();
+})
+
 // Crea el servidor HTTP
 const server = createServer(app);
 
