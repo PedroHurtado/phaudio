@@ -77,10 +77,10 @@ const defaultOptions = {
   }, buffer.duration * 1000);
 };*/
 
-const createContext = function (buffer) {
+const createContext = function (buffer,sessionRoom) {
   const start = performance.now();
   const arraybuffer = wavfile.getFile(buffer);
-  const data = serialize({ id: 1 }, new Int16Array(arraybuffer));
+  const data = serialize(sessionRoom, new Int16Array(arraybuffer));
   const { json, file } = deserialize(data);
   console.log(json);
   const end = performance.now();
@@ -98,13 +98,12 @@ const createContext = function (buffer) {
 };
 
 export class AudioRecorder {
-  constructor(worker, sessionRoom) {
-    this.worker = worker;
-    this.sessionRoom= sessionRoom
+  constructor(worker) {
+    this.worker = worker;    
     this.worker.onmessage = async ({ data }) => {
-      const { msg, audio } = data;
+      const { msg, audio, sessionRoom } = data;
       if (msg === Message.SpeechEnd) {
-        createContext(audio);
+        createContext(audio,sessionRoom);
       }
     };
   }
@@ -113,20 +112,21 @@ export class AudioRecorder {
   }
   static createSileroWorker() {
     return new Worker(AudioRecorder.env.silero.url, {
-      type: "module",
+      type: "module",      
     });
   }
   static new(sessionRoom) {
     return new Promise((resolve, reject) => {
-      const worker = AudioRecorder.createSileroWorker();
+      const worker = AudioRecorder.createSileroWorker(sessionRoom);
       worker.postMessage({
         type: "start",
         ort: AudioRecorder.env.silero.ort,
         options: AudioRecorder.env.options,
+        sessionRoom
       });
       worker.onmessage = async ({ data }) => {
         if (data === "OK") {          
-          resolve(new AudioRecorder(worker, sessionRoom));
+          resolve(new AudioRecorder(worker));
         }
       };
     });

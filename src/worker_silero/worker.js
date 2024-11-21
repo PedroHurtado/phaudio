@@ -6,12 +6,15 @@ import * as ort from "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/+esm";
 let silero;
 let options;
 let frameProcesor;
+let sessionRoom;
+
 self.onmessage = async ({ data }) => {
   
   const { type } = data;
   if (type === "start") {
     ort.env.wasm = data.ort.wasm;
     options = data.options;
+    sessionRoom = data.sessionRoom;
     try {
       silero = await run(data.ort.model);      
       frameProcesor = getProcesor()
@@ -20,13 +23,13 @@ self.onmessage = async ({ data }) => {
       console.log(err);
     }
   } else if (type === "frame") {
-    const {frame, sessionRoom } = data;    
+    const {frame} = data;    
     try {      
       const result = await frameProcesor.process(frame);
       const { msg, audio } = result;
       if (msg) {
         console.log(`${msg}->${Date.now()}`);
-        self.postMessage({msg, audio });
+        self.postMessage({msg, audio, sessionRoom });
       }
     } catch (err) {
       console.log(err);
