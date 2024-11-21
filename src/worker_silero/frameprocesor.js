@@ -15,7 +15,7 @@ function concatArray(audioBuffer) {
   if (firstSpeechIndex === -1 || lastSpeechIndex === -1) return Float32Array(0);
 
   const generator = function* () {
-    yield* new Float32Array(1536);
+    //yield* new Float32Array(1536);
     for (let i = firstSpeechIndex; i <= lastSpeechIndex; i++) {
       const { frame, isSpeech } = audioBuffer[i];
       if (isSpeech) {
@@ -24,7 +24,7 @@ function concatArray(audioBuffer) {
         yield* new Float32Array(128);
       }
     }
-    yield* new Float32Array(1536);
+    //yield* new Float32Array(1536);
   };
 
   const array = new Float32Array(generator());

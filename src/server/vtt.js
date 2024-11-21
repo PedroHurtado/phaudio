@@ -8,7 +8,7 @@ function timeToMilliseconds(time) {
            parseInt(millis, 10);
 }
 
-function convertVTTToMilliseconds(vttContent) {
+export function convertVTTToMilliseconds(vttContent) {
     const lines = vttContent.split('\n');
     let result = [];
     let currentText = '';
@@ -35,21 +35,6 @@ function convertVTTToMilliseconds(vttContent) {
     if (result.length > 0 && currentText) {
         result[result.length - 1].text = currentText.trim();
     }
-
     return result;
 }
 
-const vttContent = `
-WEBVTT
-
-1
-00:00:00.000 --> 00:00:05.000
-Este es un ejemplo de subtítulo para los primeros 5 segundos.
-
-2
-00:00:05.001 --> 00:00:10.000
-Aquí aparece otro subtítulo durante los próximos 5 segundos.
-`;
-
-const millisecondsIntervals = convertVTTToMilliseconds(vttContent);
-console.log(millisecondsIntervals);

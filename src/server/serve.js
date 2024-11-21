@@ -3,6 +3,7 @@ import { WebSocketServer } from 'ws';
 import { createServer } from 'http';
 import {transcribe} from './openai.js'
 import { deserialize } from '../client/serializer.js';
+import { convertVTTToMilliseconds } from './vtt.js';
 //https://github.com/Microsoft/cognitive-services-speech-sdk-js
 //https://github.com/Azure-Samples/AzureSpeechReactSample
 
@@ -48,9 +49,9 @@ wss.on('connection', (ws) => {
   ws.on('message', async (message) => {
     const arrayBuffer = message.buffer.slice(message.byteOffset, message.byteOffset + message.byteLength);
     const {json,file} = deserialize(arrayBuffer)    
-    const response = await transcribe(file)    
+    const response = convertVTTToMilliseconds(await transcribe(file))    
     const encoder = new TextEncoder()    
-    ws.send(encoder.encode(response),{binary:true})    
+    ws.send(encoder.encode(JSON.stringify(response)),{binary:true})    
   });
 
   // Maneja la desconexión del cliente
