@@ -98,8 +98,9 @@ const createContext = function (buffer) {
 };
 
 export class AudioRecorder {
-  constructor(worker) {
+  constructor(worker, sessionRoom) {
     this.worker = worker;
+    this.sessionRoom= sessionRoom
     this.worker.onmessage = async ({ data }) => {
       const { msg, audio } = data;
       if (msg === Message.SpeechEnd) {
@@ -115,7 +116,7 @@ export class AudioRecorder {
       type: "module",
     });
   }
-  static new() {
+  static new(sessionRoom) {
     return new Promise((resolve, reject) => {
       const worker = AudioRecorder.createSileroWorker();
       worker.postMessage({
@@ -124,9 +125,8 @@ export class AudioRecorder {
         options: AudioRecorder.env.options,
       });
       worker.onmessage = async ({ data }) => {
-        if (data === "OK") {
-          //AudioRecorder.env.url_procesor = await fetcher_worker();
-          resolve(new AudioRecorder(worker));
+        if (data === "OK") {          
+          resolve(new AudioRecorder(worker, sessionRoom));
         }
       };
     });
