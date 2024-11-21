@@ -20,7 +20,7 @@ self.onmessage = async ({ data }) => {
       console.log(err);
     }
   } else if (type === "frame") {
-    const {frame } = data;
+    const {frame, sessionRoom } = data;    
     try {      
       const result = await frameProcesor.process(frame);
       const { msg, audio } = result;

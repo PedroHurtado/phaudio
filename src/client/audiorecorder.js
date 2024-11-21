@@ -109,7 +109,7 @@ export class AudioRecorder {
     };
   }
   async start(stream) {
-    await Context.new(stream, this.worker);
+    await Context.new(stream, this.worker, this.sessionRoom);
   }
   static createSileroWorker() {
     return new Worker(AudioRecorder.env.silero.url, {
