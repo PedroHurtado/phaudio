@@ -22,6 +22,6 @@ async function init(params) {
     },
     video: false,
   });  
-  await audioRecorder.addSpeaker(1, localStream); 
+  await audioRecorder.start(localStream); 
 }
 init();
