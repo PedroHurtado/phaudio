@@ -4,14 +4,21 @@ import { createServer } from 'http';
 import {transcribe} from './openai.js'
 import { deserialize } from '../client/serializer.js';
 import { convertVTTToMilliseconds } from './vtt.js';
+import cors from 'cors'
 //https://github.com/Microsoft/cognitive-services-speech-sdk-js
 //https://github.com/Azure-Samples/AzureSpeechReactSample
 
 
 
+const corsOptions={
+  origin: '*', 
+  methods: ['GET', 'POST', 'HEAD'],     
+  exposedHeaders: ['Server-Date'], 
+}
 // Inicializa la aplicación Express
 const app = express();
 
+app.use(cors(corsOptions))
 // Middleware para servir archivos estáticos
 app.use(express.static('public'));
 
