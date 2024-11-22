@@ -78,15 +78,11 @@ const defaultOptions = {
 };*/
 
 const createContext = function (buffer,sessionRoom) {
-  const start = performance.now();
+  
   const arraybuffer = wavfile.getFile(buffer);
   const data = serialize(sessionRoom, new Int16Array(arraybuffer));
-  const { json, file } = deserialize(data);
-  console.log(json);
-  const end = performance.now();
-  console.log(`start:${start} end:${end} dif:${end - start}`);
+  const { file } = deserialize(data);
   AudioRecorder.env.socket.send(data);
-
   const blob = new Blob([file.buffer], { type: "audio/wav" });
   const url = URL.createObjectURL(blob);
   document.createElement("audio");
@@ -101,9 +97,9 @@ export class AudioRecorder {
   constructor(worker) {
     this.worker = worker;    
     this.worker.onmessage = async ({ data }) => {
-      const { msg, audio, sessionRoom } = data;
+      const { msg, audio, sessionRoom, start } = data;
       if (msg === Message.SpeechEnd) {
-        createContext(audio,sessionRoom);
+        createContext(audio,{...sessionRoom,start});
       }
     };
   }
@@ -115,14 +111,15 @@ export class AudioRecorder {
       type: "module",      
     });
   }
-  static new(sessionRoom) {
+  static new(sessionRoom,diff) {
     return new Promise((resolve, reject) => {
       const worker = AudioRecorder.createSileroWorker(sessionRoom);
       worker.postMessage({
         type: "start",
         ort: AudioRecorder.env.silero.ort,
         options: AudioRecorder.env.options,
-        sessionRoom
+        sessionRoom,
+        diff
       });
       worker.onmessage = async ({ data }) => {
         if (data === "OK") {          

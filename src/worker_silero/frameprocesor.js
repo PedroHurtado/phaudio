@@ -1,7 +1,6 @@
 import { Message } from "./message.js";
 
-function concatArray(audioBuffer) {
-  console.log(audioBuffer.length * 1536);
+function concatArray(audioBuffer) {  
 
   let firstSpeechIndex = audioBuffer.findIndex((item) => item.isSpeech);
   let lastSpeechIndex =
@@ -14,8 +13,7 @@ function concatArray(audioBuffer) {
 
   if (firstSpeechIndex === -1 || lastSpeechIndex === -1) return Float32Array(0);
 
-  const generator = function* () {
-    //yield* new Float32Array(1536);
+  const generator = function* () {    
     for (let i = firstSpeechIndex; i <= lastSpeechIndex; i++) {
       const { frame, isSpeech } = audioBuffer[i];
       if (isSpeech) {
@@ -23,12 +21,10 @@ function concatArray(audioBuffer) {
       } else {
         yield* new Float32Array(128);
       }
-    }
-    //yield* new Float32Array(1536);
+    }   
   };
 
-  const array = new Float32Array(generator());
-  console.log(array.length);
+  const array = new Float32Array(generator());  
   return array;
 }
 

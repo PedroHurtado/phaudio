@@ -8,7 +8,7 @@ function timeToMilliseconds(time) {
            parseInt(millis, 10);
 }
 
-export function convertVTTToMilliseconds(vttContent) {
+export function convertVTTToMilliseconds(vttContent, start) {
     const lines = vttContent.split('\n');
     let result = [];
     let currentText = '';
@@ -22,8 +22,8 @@ export function convertVTTToMilliseconds(vttContent) {
             const startTime = timeToMilliseconds(timeMatch[1]);
             const endTime = timeToMilliseconds(timeMatch[2]);
             result.push({
-                start: startTime,
-                end: endTime,
+                start: Math.floor(Math.round(startTime+start)),
+                end: Math.floor(Math.round(endTime+start)),
                 text: ''  // Inicializa la propiedad text aquí
             });
             currentText = '';

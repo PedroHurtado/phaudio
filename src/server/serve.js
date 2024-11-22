@@ -28,7 +28,9 @@ app.get('/', (req, res) => {
 });
 
 app.head('/timer', (req,res)=>{
-  res.set('server-date', Date.now());
+  const date = Date.now()
+  res.set('server-date', date);
+  res.set('Timing-Allow-Origin','*')  
   res.end();
 })
 
@@ -61,7 +63,7 @@ wss.on('connection', (ws) => {
   ws.on('message', async (message) => {
     const arrayBuffer = message.buffer.slice(message.byteOffset, message.byteOffset + message.byteLength);
     const {json,file} = deserialize(arrayBuffer)    
-    const response = convertVTTToMilliseconds(await transcribe(file))    
+    const response = convertVTTToMilliseconds(await transcribe(file), json.start)    
     const encoder = new TextEncoder()    
     ws.send(encoder.encode(JSON.stringify(response)),{binary:true})    
   });
