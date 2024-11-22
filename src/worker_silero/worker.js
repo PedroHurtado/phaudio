@@ -3,6 +3,7 @@ import { FrameProcessor } from "./frameprocesor.js";
 import { Message } from "./message.js";
 import * as ort from "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/+esm";
 import { createMessage } from "./createMessage.js";
+import { sendData } from "./sendData.js";
 
 let silero;
 let options;
@@ -34,7 +35,8 @@ self.onmessage = async ({ data }) => {
         start = Date.now();
       } else if (msg === Message.SpeechEnd) {
         const serverData = createMessage(audio,{sessionRoom,start,start: start + diff})
-        self.postMessage({ msg, serverData });
+        const transcription = await sendData('http://localhost:3000/upload',serverData)
+        self.postMessage({ msg, serverData, transcription });
       }
     } catch (err) {
       console.log(err);

@@ -77,8 +77,9 @@ const defaultOptions = {
   }, buffer.duration * 1000);
 };*/
 
-const createContext = function (data) {  
+const createContext = function (data, transcription) {  
  
+  //create audio
   const { file } = deserialize(data);
   AudioRecorder.env.socket.send(data);
   const blob = new Blob([file.buffer], { type: "audio/wav" });
@@ -88,16 +89,19 @@ const createContext = function (data) {
   audio.setAttribute("controls", "");
   audio.src = url;
   const container = document.getElementById("container");
+  const pre= document.createElement('pre')
+  pre.textContent = JSON.stringify(transcription);  
   container.appendChild(audio);
+  container.appendChild(pre)
 };
 
 export class AudioRecorder {
   constructor(worker) {
     this.worker = worker;    
     this.worker.onmessage = async ({ data }) => {
-      const { msg, serverData } = data;
+      const { msg, serverData, transcription } = data;
       if (msg === Message.SpeechEnd) {
-        createContext(serverData);
+        createContext(serverData,transcription);
       }
     };
   }
