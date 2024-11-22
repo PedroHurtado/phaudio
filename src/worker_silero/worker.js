@@ -2,7 +2,7 @@ import { Silero } from "./silero.js";
 import { FrameProcessor } from "./frameprocesor.js";
 import { Message } from "./message.js";
 import * as ort from "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/+esm";
-
+import { createMessage } from "./createMessage.js";
 
 let silero;
 let options;
@@ -12,7 +12,6 @@ let diff;
 let start;
 
 self.onmessage = async ({ data }) => {
-  
   const { type } = data;
   if (type === "start") {
     ort.env.wasm = data.ort.wasm;
@@ -20,22 +19,22 @@ self.onmessage = async ({ data }) => {
     sessionRoom = data.sessionRoom;
     diff = data.diff;
     try {
-      silero = await run(data.ort.model);      
-      frameProcesor = getProcesor()
+      silero = await run(data.ort.model);
+      frameProcesor = getProcesor();
       self.postMessage("OK");
     } catch (err) {
       console.log(err);
     }
   } else if (type === "frame") {
-    const {frame} = data;    
-    try {      
+    const { frame } = data;
+    try {
       const result = await frameProcesor.process(frame);
       const { msg, audio } = result;
-      if(msg === Message.SpeechStart){
-        start =Date.now()
-      }
-      else if (msg === Message.SpeechEnd) {                
-        self.postMessage({msg, audio,sessionRoom, start:start+diff});
+      if (msg === Message.SpeechStart) {
+        start = Date.now();
+      } else if (msg === Message.SpeechEnd) {
+        const serverData = createMessage(audio,{sessionRoom,start,start: start + diff})
+        self.postMessage({ msg, serverData });
       }
     } catch (err) {
       console.log(err);

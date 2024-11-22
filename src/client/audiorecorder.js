@@ -77,10 +77,8 @@ const defaultOptions = {
   }, buffer.duration * 1000);
 };*/
 
-const createContext = function (buffer,sessionRoom) {
-  
-  const arraybuffer = wavfile.getFile(buffer);
-  const data = serialize(sessionRoom, new Int16Array(arraybuffer));
+const createContext = function (data) {  
+ 
   const { file } = deserialize(data);
   AudioRecorder.env.socket.send(data);
   const blob = new Blob([file.buffer], { type: "audio/wav" });
@@ -97,9 +95,9 @@ export class AudioRecorder {
   constructor(worker) {
     this.worker = worker;    
     this.worker.onmessage = async ({ data }) => {
-      const { msg, audio, sessionRoom, start } = data;
+      const { msg, serverData } = data;
       if (msg === Message.SpeechEnd) {
-        createContext(audio,{...sessionRoom,start});
+        createContext(serverData);
       }
     };
   }
