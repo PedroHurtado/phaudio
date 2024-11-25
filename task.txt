@@ -1,0 +1,4 @@
+Tareas
+	1. Crear diferentes packages
+	2. Conectar con la api de 160world
+	3. Refactor->control de exceptions
