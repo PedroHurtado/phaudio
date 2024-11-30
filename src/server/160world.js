@@ -16,11 +16,13 @@ export async function valiate(session){
     })
     return (response.status === 200)        
 }
-export async function transcript(session, data) {
-    const url = getUrl(session, 'transcript')
+export async function transcript({sessionRoom}, data) {
+    const url = getUrl(sessionRoom, 'transcript')
     const response = await fetch(url,{
         method:'POST',
         headers:{...headers,... {'content-type':'aplicación/json'}},
         body:JSON.stringify(data)
     })
+    const text = await response.text()
+    console.log(text)
 }
