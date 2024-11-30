@@ -5,6 +5,8 @@ import { transcribe } from "./openai.js";
 import { deserialize } from "../client/serializer.js";
 import { convertVTTToMilliseconds } from "./vtt.js";
 import cors from "cors";
+import { valiate, transcript } from "./160world.js";
+import { getJwt } from "./jwt.js";
 //https://github.com/Microsoft/cognitive-services-speech-sdk-js
 //https://github.com/Azure-Samples/AzureSpeechReactSample
 
@@ -17,6 +19,7 @@ const corsOptions = {
 const app = express();
 
 app.use(cors(corsOptions));
+app.use(express.json());
 // Middleware para servir archivos estáticos
 app.use(express.static("public"));
 
@@ -32,7 +35,23 @@ app.head("/timer", (req, res) => {
   res.end();
 });
 
-app.post("/upload", async (req, res) => {
+function autorization() {
+  return function (req, res, next) {
+    next();
+  };
+}
+
+app.post("/login", async (req, res) => {
+  const session = req.body;
+  const result = await valiate(session);
+  if (result) {
+    res.json(getJwt(session));
+  } else {
+    res.status(500).send("session no valida");
+  }
+});
+
+app.post("/upload", autorization(), async (req, res) => {
   let chunks = [];
   req.on("data", (chunk) => {
     chunks.push(chunk);
@@ -40,17 +59,19 @@ app.post("/upload", async (req, res) => {
 
   req.on("end", async () => {
     try {
-      
       const buffer = Buffer.concat(chunks);
-      const arrayBuffer = buffer.buffer.slice(buffer.byteOffset, buffer.byteOffset + buffer.byteLength);
-      
+      const arrayBuffer = buffer.buffer.slice(
+        buffer.byteOffset,
+        buffer.byteOffset + buffer.byteLength
+      );
+
       const { json, file } = deserialize(arrayBuffer);
       const response = convertVTTToMilliseconds(
         await transcribe(file),
         json.start
       );
-      res.json(response)
-
+      await transcript(json, response);
+      res.json(response);
     } catch (error) {
       console.error("Error al procesar los datos:", error);
       res.status(500).send("Error procesando los datos");

@@ -2,11 +2,12 @@ import { AudioRecorder } from "./audiorecorder.js";
 
 export async function getTimeServer() {
     let ttfb=0
+    const url = `${AudioRecorder.env.url_server}/timer`
     const timerClient = Date.now()
-    const response = await fetch(AudioRecorder.env.url_timer, { method: "HEAD" })
+    const response = await fetch(url, { method: "HEAD" })
     const timeServer = Number(response.headers.get('server-date'))
     const diff = timeServer - timerClient
-    const entry = await waitForEntry(AudioRecorder.env.url_timer)
+    const entry = await waitForEntry(url)
     if(entry){
         ttfb = entry.responseStart - entry.requestStart
     }
@@ -18,8 +19,7 @@ async function waitForEntry(url, retries = 5, interval = 100) {
         const entry = performance.getEntriesByName(url, 'resource')[0];
         if (entry) {
             return entry;
-        }
-        // Espera antes de intentar de nuevo
+        }        
         await new Promise(resolve => setTimeout(resolve, interval));
     }
     return null; // No se encontró la entrada

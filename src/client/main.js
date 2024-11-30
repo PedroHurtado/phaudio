@@ -1,5 +1,6 @@
 import { AudioRecorder } from "./audiorecorder.js";
 import { getSession } from "./getsession.js";
+import { login } from "./login.js";
 import { getTimeServer } from "./timeserver.js";
 AudioRecorder.env.socket = new WebSocket("http://localhost:3000/ws");
 //Solo a efectos de probar una getSesion, suprimir en produccion
@@ -13,12 +14,14 @@ AudioRecorder.env.options = {
   minSpeechFrames: 3,
   submitUserSpeechOnPause: false,
 };
-AudioRecorder.env.url_timer = 'http://localhost:3000/timer'
+AudioRecorder.env.url_server = 'http://localhost:3000'
 
 async function init(params) {
-  const diff = await getTimeServer()
+  const session = getSession(AudioRecorder.env.urlRoom || location.href)
+  const diff = await getTimeServer()  
+  await login(session)
   const audioRecorder = await AudioRecorder.new(
-    getSession(AudioRecorder.env.urlRoom || location.href),
+    session,
     diff
   );
   const localStream = await navigator.mediaDevices.getUserMedia({
