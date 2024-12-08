@@ -11,6 +11,9 @@
   },
   "author": "",
   "license": "ISC",
+  "workspaces": [
+    "packages/*"
+  ],
   "dependencies": {
     "@ffmpeg/ffmpeg": "^0.12.10",
     "audiorecorder": "file:",
