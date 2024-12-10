@@ -57,6 +57,7 @@ export default [
       file: "./packages/client/build/index.esm.js",
       format: "es",
     },
+    external:["@audiorecorder/common"],
     plugins: [
       del(),
       alias({

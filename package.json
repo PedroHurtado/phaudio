@@ -16,7 +16,6 @@
     "packages/*"
   ],
   "dependencies": {
-    "@audiorecorder/common": "file",
     "audiorecorder": "file:"
   },
   "devDependencies": {
