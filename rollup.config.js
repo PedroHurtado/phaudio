@@ -10,7 +10,6 @@ import copy from 'rollup-plugin-copy';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-
 export default [
   {
     input: "./packages/common/index.js",
@@ -84,6 +83,19 @@ export default [
     external:["https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/+esm"],
     plugins: [
       del(),
+      copy({       
+        hook:"writeBundle",
+        targets: [
+          {
+            src: "packages/worker_silero/src/*.onnx",
+            dest: "packages/worker_silero/build",
+          },
+          {
+            src: "packages/worker_silero/src/wasm/*.*",
+            dest: "packages/worker_silero/build/wasm",
+          },
+        ],
+      }),
       alias({
         entries: [
           {
@@ -94,11 +106,7 @@ export default [
       }),
       resolve(),
       commonjs(), 
-      copy({
-        targets:[
-          {src:"./packages/worker_silero/**/*.onmx", dest:"./packages/worker_silero/build"},          
-        ]
-      })    
+      
     ],
   },
 ];
