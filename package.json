@@ -16,12 +16,8 @@
     "packages/*"
   ],
   "dependencies": {
-    "@ffmpeg/ffmpeg": "^0.12.10",
-    "audiorecorder": "file:",
-    "cors": "^2.8.5",
-    "express": "^4.21.0",
-    "jsonwebtoken": "^9.0.2",
-    "ws": "^8.18.0"
+    "@audiorecorder/common": "file",
+    "audiorecorder": "file:"
   },
   "devDependencies": {
     "@rollup/plugin-alias": "^5.1.1",

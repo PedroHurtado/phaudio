@@ -11,5 +11,8 @@
   "dependencies": {
     "@audiorecorder/client": "file:",
     "@audiorecorder/common": "file:"
+  },
+  "peerDependencies": {
+    "@audiorecorder/common": "file:"
   }
 }

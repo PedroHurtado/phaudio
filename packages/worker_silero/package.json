@@ -11,5 +11,8 @@
   "dependencies": {
     "@audiorecorder/common": "file:",
     "@audiorecorder/worker_silero": "file:"
+  },
+  "peerDependencies": {
+    "@audiorecorder/common": "file:"
   }
 }
