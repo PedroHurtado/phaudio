@@ -11,6 +11,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default [
+  //common
   {
     input: "./packages/common/index.js",
     output: {
@@ -19,6 +20,7 @@ export default [
     },
     plugins: [del()],
   },
+  //serve
   {
     input: "./packages/server/src/serve.js",
     output: {
@@ -40,6 +42,7 @@ export default [
       commonjs(),
     ],
   },
+  //client
   {
     input: "./packages/client/src/main.js",
     output: {
@@ -60,7 +63,7 @@ export default [
       commonjs(),     
     ],
   },
-
+  //workletNode
   {
     input: "./packages/worker_audio/src/procesor.js",
     output: {
@@ -73,7 +76,7 @@ export default [
       commonjs(),     
     ],
   },
-
+  //worker silero
   {
     input: "./packages/worker_silero/src/worker.js",
     output: {
