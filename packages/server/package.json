@@ -2,7 +2,8 @@
   "name": "@audiorecorder/server",
   "version": "1.0.0",
   "description": "",
-  "module": "build/server.esm.js",
+  "main": "build/serve.esm.js",
+  "mopdue": "build/serve.esm.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
