@@ -6,6 +6,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import json from '@rollup/plugin-json';
 import copy from 'rollup-plugin-copy';
+import { visualizer } from 'rollup-plugin-visualizer';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -33,6 +34,7 @@ export default [
         format: "cjs",
       }
     ],
+    external:["express","cors","jsonwebtoken","@audiorecorder/common"],
     plugins: [
       del(),
       alias({
@@ -115,7 +117,7 @@ export default [
       }),
       resolve(),
       commonjs(), 
-      
+      visualizer({ filename: 'stats.html' }),
     ],
   },
 ];

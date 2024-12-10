@@ -26,6 +26,7 @@
     "@rollup/plugin-node-resolve": "^15.3.0",
     "rollup": "^4.28.1",
     "rollup-plugin-copy": "^3.5.0",
-    "rollup-plugin-del": "^1.0.1"
+    "rollup-plugin-del": "^1.0.1",
+    "rollup-plugin-visualizer": "^5.12.0"
   }
 }
