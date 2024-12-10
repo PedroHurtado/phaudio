@@ -9,8 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@audiorecorder/client": "file:",
-    "@audiorecorder/common": "file:"
+    "@audiorecorder/client": "file:"
   },
   "peerDependencies": {
     "@audiorecorder/common": "file:"
