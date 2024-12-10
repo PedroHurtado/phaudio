@@ -2,13 +2,15 @@
   "name": "@audiorecorder/server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "module": "build/server.esm.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@audiorecorder/common": "file:",
     "@audiorecorder/server": "file:",
     "cors": "^2.8.5",
     "express": "^4.21.2",

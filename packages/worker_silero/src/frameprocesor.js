@@ -1,4 +1,4 @@
-import { Message } from "./message.js";
+import { Message } from "@audiorecorder/common";
 
 function concatArray(audioBuffer) {  
 

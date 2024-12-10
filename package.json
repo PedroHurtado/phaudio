@@ -5,6 +5,7 @@
   "main": "./src/server/serve.js",
   "type": "module",
   "scripts": {
+    "build": "npx rollup -c rollup.config.js",
     "start": "http-server ./src -b",
     "serve": "node --env-file=.env .",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,5 +22,14 @@
     "express": "^4.21.0",
     "jsonwebtoken": "^9.0.2",
     "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-alias": "^5.1.1",
+    "@rollup/plugin-commonjs": "^28.0.1",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "rollup": "^4.28.1",
+    "rollup-plugin-copy": "^3.5.0",
+    "rollup-plugin-del": "^1.0.1"
   }
 }

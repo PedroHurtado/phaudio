@@ -10,7 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "@audiorecorder/client": "file:",
-    "audiorecorderclient": "file:",
-    "client": "file:"
+    "@audiorecorder/common": "file:"
   }
 }

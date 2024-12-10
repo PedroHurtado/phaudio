@@ -1,6 +1,6 @@
 import { Silero } from "./silero.js";
 import { FrameProcessor } from "./frameprocesor.js";
-import { Message } from "./message.js";
+import { Message } from "@audiorecorder/common";
 import * as ort from "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/+esm";
 import { createMessage } from "./createMessage.js";
 import { sendData } from "./sendData.js";

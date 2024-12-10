@@ -2,13 +2,14 @@
   "name": "@audiorecorder/worker_silero",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "module": "build/index.esm.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@audiorecorder/common": "file:",
     "@audiorecorder/worker_silero": "file:"
   }
 }
