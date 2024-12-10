@@ -23,10 +23,16 @@ export default [
   //serve
   {
     input: "./packages/server/src/serve.js",
-    output: {
-      file: "./packages/server/build/server.esm.js",
-      format: "es",
-    },
+    output: [
+      {
+        file: "./packages/server/build/serve.esm.js",
+        format: "es",
+      },
+      {
+        file: "./packages/server/build/serve.cjs.js",
+        format: "cjs",
+      }
+    ],
     plugins: [
       del(),
       alias({
