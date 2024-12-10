@@ -2,6 +2,7 @@
   "name": "@audiorecorder/common",
   "version": "1.0.0",
   "description": "",
+  "main": "build/index.esm.js",
   "module": "build/index.esm.js",
   "type": "module",
   "scripts": {

@@ -33,7 +33,7 @@ export default [
         file: "./packages/server/build/serve.cjs.js",
         format: "cjs",
       }
-    ],
+    ],    
     external:["express","cors","jsonwebtoken","@audiorecorder/common"],
     plugins: [
       del(),
