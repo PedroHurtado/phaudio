@@ -1,4 +1,4 @@
-import { AudioRecorder } from "./audiorecorder.js";
+import { config } from "./config";
 
 export class Context {
   constructor(audioContext, procesor, worker) {
@@ -12,12 +12,12 @@ export class Context {
   }  
   static async createWorkletNode(audioContext) {
     await audioContext.audioWorklet.addModule(
-      AudioRecorder.env.url_worker_audio
+      config.url_worker_audio
     );
 
     return new AudioWorkletNode(audioContext, "audio-processor", {
       processorOptions: {
-        options: AudioRecorder.env.options,
+        options: config.options,
       },
     });
   }

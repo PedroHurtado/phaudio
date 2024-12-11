@@ -1,8 +1,8 @@
-import { AudioRecorder } from "./audiorecorder.js";
+import { config } from "./config"
 
 export async function getTimeServer() {
     let ttfb=0
-    const url = `${AudioRecorder.env.url_server}/timer`
+    const url = `${config.url_server}/timer`
     const timerClient = Date.now()
     const response = await fetch(url, { method: "HEAD" })
     const timeServer = Number(response.headers.get('server-date'))

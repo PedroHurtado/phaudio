@@ -1,6 +1,6 @@
-import { AudioRecorder } from "./audiorecorder.js"
+import { config } from "./config"
 export async function login(session){
-     const url = `${AudioRecorder.env.url_server}/login`
+     const url = `${config.url_server}/login`
      const response = await fetch(url, {
         method:'POST',
         headers:{
