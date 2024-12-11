@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@audiorecorder/common": "workspace:^",
-    "@audiorecorder/worker_silero": "file:"
+    "@audiorecorder/common": "workspace:^"    
   }
 }

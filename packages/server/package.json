@@ -11,8 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@audiorecorder/common": "workspace:^",
-    "@audiorecorder/server": "file:",
+    "@audiorecorder/common": "workspace:^",    
     "cors": "^2.8.5",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2"
