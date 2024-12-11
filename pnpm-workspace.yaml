@@ -1,0 +1,2 @@
+packages:
+  - "packages/*" # Define los paquetes en la carpeta packages  

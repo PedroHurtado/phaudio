@@ -2,8 +2,8 @@
   "name": "@audiorecorder/server",
   "version": "1.0.0",
   "description": "",
-  "main": "build/serve.esm.js",
-  "mopdue": "build/serve.esm.js",
+  "main": "dist/serve.esm.js",
+  "mopdue": "dist/serve.esm.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@audiorecorder/common": "1.0.0",
+    "@audiorecorder/common": "workspace:^",
     "@audiorecorder/server": "file:",
     "cors": "^2.8.5",
     "express": "^4.21.2",

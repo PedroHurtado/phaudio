@@ -2,8 +2,8 @@
   "name": "@audiorecorder/common",
   "version": "1.0.0",
   "description": "",
-  "main": "build/index.esm.js",
-  "module": "build/index.esm.js",
+  "main": "dist/index.esm.js",
+  "module": "dist/index.esm.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

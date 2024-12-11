@@ -12,9 +12,6 @@
   },
   "author": "",
   "license": "ISC",
-  "workspaces": [
-    "packages/*"
-  ],
   "dependencies": {
     "audiorecorder": "file:"
   },

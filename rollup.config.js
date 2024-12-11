@@ -16,7 +16,7 @@ export default [
   {
     input: "./packages/common/index.js",
     output: {
-      file: "./packages/common/build/index.esm.js",
+      file: "./packages/common/dist/index.esm.js",
       format: "es",
     },
     plugins: [del()],
@@ -26,11 +26,11 @@ export default [
     input: "./packages/server/src/serve.js",
     output: [
       {
-        file: "./packages/server/build/serve.esm.js",
+        file: "./packages/server/dist/serve.esm.js",
         format: "es",
       },
       {
-        file: "./packages/server/build/serve.cjs.js",
+        file: "./packages/server/dist/serve.cjs.js",
         format: "cjs",
       }
     ],    
@@ -54,7 +54,7 @@ export default [
   {
     input: "./packages/client/src/main.js",
     output: {
-      file: "./packages/client/build/index.esm.js",
+      file: "./packages/client/dist/index.esm.js",
       format: "es",
     },
     external:["@audiorecorder/common"],
@@ -76,7 +76,7 @@ export default [
   {
     input: "./packages/worker_audio/src/procesor.js",
     output: {
-      file: "./packages/worker_audio/build/index.js",
+      file: "./packages/worker_audio/dist/index.js",
       format: "iife",
     },
     plugins: [
@@ -89,7 +89,7 @@ export default [
   {
     input: "./packages/worker_silero/src/worker.js",
     output: {
-      file: "./packages/worker_silero/build/index.esm.js",
+      file: "./packages/worker_silero/dist/index.esm.js",
       format: "es",
     },
     external:["https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/+esm"],
@@ -100,11 +100,11 @@ export default [
         targets: [
           {
             src: "packages/worker_silero/src/*.onnx",
-            dest: "packages/worker_silero/build",
+            dest: "packages/worker_silero/dist",
           },
           {
             src: "packages/worker_silero/src/wasm/*.*",
-            dest: "packages/worker_silero/build/wasm",
+            dest: "packages/worker_silero/dist/wasm",
           },
         ],
       }),
