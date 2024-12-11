@@ -1,2 +1,3 @@
 packages:
   - "packages/*" # Define los paquetes en la carpeta packages  
+store-dir: './.pnpm-store'
