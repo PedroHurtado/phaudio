@@ -4,9 +4,9 @@ import del from "rollup-plugin-del";
 import alias from "@rollup/plugin-alias";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
-import json from '@rollup/plugin-json';
-import copy from 'rollup-plugin-copy';
-import { visualizer } from 'rollup-plugin-visualizer';
+import json from "@rollup/plugin-json";
+import copy from "rollup-plugin-copy";
+import { visualizer } from "rollup-plugin-visualizer";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -23,18 +23,13 @@ export default [
   },
   //serve
   {
-    input: "./packages/server/src/serve.js",
-    output: [
-      {
-        file: "./packages/server/dist/serve.esm.js",
-        format: "es",
-      },
-      {
-        file: "./packages/server/dist/serve.cjs.js",
-        format: "cjs",
-      }
-    ],    
-    external:["express","cors","jsonwebtoken","@audiorecorder/common"],
+    input: "./packages/server/lib/server_recorder.js",
+
+    output: {
+      file: "./packages/server/dist/server_recorder",
+      format: "es",
+    },
+    external: ["express", "cors", "jsonwebtoken", "@audiorecorder/common"],
     plugins: [
       del(),
       alias({
@@ -57,7 +52,7 @@ export default [
       file: "./packages/client/dist/index.esm.js",
       format: "es",
     },
-    external:["@audiorecorder/common"],
+    external: ["@audiorecorder/common"],
     plugins: [
       del(),
       alias({
@@ -69,7 +64,7 @@ export default [
         ],
       }),
       resolve(),
-      commonjs(),     
+      commonjs(),
     ],
   },
   //workletNode
@@ -79,11 +74,7 @@ export default [
       file: "./packages/worker_audio/dist/index.js",
       format: "iife",
     },
-    plugins: [
-      del(),      
-      resolve(),
-      commonjs(),     
-    ],
+    plugins: [del(), resolve(), commonjs()],
   },
   //worker silero
   {
@@ -92,11 +83,11 @@ export default [
       file: "./packages/worker_silero/dist/index.esm.js",
       format: "es",
     },
-    external:["https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/+esm"],
+    external: ["https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/+esm"],
     plugins: [
       del(),
-      copy({       
-        hook:"writeBundle",
+      copy({
+        hook: "writeBundle",
         targets: [
           {
             src: "packages/worker_silero/src/*.onnx",
@@ -117,8 +108,8 @@ export default [
         ],
       }),
       resolve(),
-      commonjs(), 
-      visualizer({ filename: 'stats.html' }),
+      commonjs(),
+      visualizer({ filename: "stats.html" }),
     ],
   },
 ];

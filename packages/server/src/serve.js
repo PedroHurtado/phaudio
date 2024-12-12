@@ -8,7 +8,6 @@ import { deserialize } from "@audiorecorder/common";
 import { convertVTTToMilliseconds } from "./vtt.js";
 import { validate, transcript } from "./160world.js";
 
-
 const corsOptions = {
   origin: "*",
   methods: ["POST", "HEAD"],
@@ -19,9 +18,6 @@ const app = express();
 
 app.use(cors(corsOptions));
 app.use(express.json());
-
-
-
 
 app.head("/timer", (req, res) => {
   const date = Date.now();
@@ -79,12 +75,12 @@ app.post("/upload", autorization(), async (req, res) => {
   });
 });
 
-// Crea el servidor HTTP
-const server = createServer(app);
-
-
-// Escucha en el puerto 3000
-const PORT = 3000;
-server.listen(PORT, () => {
-  console.log(`Servidor escuchando en http://localhost:${PORT}`);
-});
+export function startServer(port) {
+  const PORT = port || 3000;
+  // Crea el servidor HTTP
+  const server = createServer(app); 
+ 
+  server.listen(PORT, () => {
+    console.log(`Servidor escuchando en http://localhost:${PORT}`);
+  });
+}

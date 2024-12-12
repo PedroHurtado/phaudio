@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "./src/server/serve.js",
+  "type": "module",
   "scripts": {
     "pack": "bash ./scripts/npmpack.sh",
     "build": "npx rollup -c rollup.config.js",
