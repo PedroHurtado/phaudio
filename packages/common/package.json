@@ -5,6 +5,9 @@
   "main": "dist/index.esm.js",
   "module": "dist/index.esm.js",
   "type": "module",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
