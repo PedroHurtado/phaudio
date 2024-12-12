@@ -26,7 +26,7 @@ export default [
     input: "./packages/server/lib/server_recorder.js",
 
     output: {
-      file: "./packages/server/dist/server_recorder",
+      file: "./packages/server/dist/160world-server",
       format: "es",
     },
     external: ["express", "cors", "jsonwebtoken", "@audiorecorder/common"],

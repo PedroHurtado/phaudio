@@ -2,7 +2,7 @@
   "name": "@audiorecorder/server",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/server_recorder",
+  "main": "dist/160world-server",
   "type": "module",
   "files": [
     "dist"
@@ -21,6 +21,6 @@
     "jsonwebtoken": "^9.0.2"
   },
   "bin": {
-    "160world-server": "./dist/server_recorder"
+    "160world-server": "./dist/160world-server"
   }
 }
