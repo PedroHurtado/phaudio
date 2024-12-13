@@ -2,7 +2,6 @@
   "name": "@audiorecorder/server",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/160world-server",
   "type": "module",
   "files": [
     "dist"
@@ -14,6 +13,7 @@
     "@audiorecorder/server": "file:",
     "commander": "^12.1.0",
     "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2"
   },

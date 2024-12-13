@@ -52,14 +52,20 @@ importers:
   packages/server:
     dependencies:
       '@audiorecorder/common':
-        specifier: workspace:^
-        version: link:../common
+        specifier: ^1.0.0
+        version: 1.0.0
+      '@audiorecorder/server':
+        specifier: 'file:'
+        version: 'link:'
       commander:
         specifier: ^12.1.0
         version: 12.1.0
       cors:
         specifier: ^2.8.5
         version: 2.8.5
+      dotenv:
+        specifier: ^16.4.7
+        version: 16.4.7
       express:
         specifier: ^4.21.2
         version: 4.21.2
@@ -80,6 +86,13 @@ importers:
         version: link:../common
 
 packages:
+
+  '@audiorecorder/common@1.0.0':
+    resolution: {integrity: sha512-vw6F/Zmgw4TXF9oVhutdmItIZ/c6wKwk3tOYCxIMoDs2U0rtCHoCBzmkWueZ4hVgmp2Sq5LvBZTffVDiboddjA==}
+
+  '@audiorecorder/server@file:packages/server':
+    resolution: {directory: packages/server, type: directory}
+    hasBin: true
 
   '@jridgewell/sourcemap-codec@1.5.0':
     resolution: {integrity: sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ==}
@@ -379,6 +392,10 @@ packages:
   dir-glob@3.0.1:
     resolution: {integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==}
     engines: {node: '>=8'}
+
+  dotenv@16.4.7:
+    resolution: {integrity: sha512-47qPchRCykZC03FhkYAhrvwU4xDBFIj1QPqaarj6mdM/hgUzfPHcpkHJOn3mJAufFeeAxAzeGsr5X0M4k6fLZQ==}
+    engines: {node: '>=12'}
 
   dunder-proto@1.0.0:
     resolution: {integrity: sha512-9+Sj30DIu+4KvHqMfLUGLFYL2PkURSYMVXJyXe92nFRvlYq5hBjLEhblKB+vkd/WVlUYMWigiY07T91Fkk0+4A==}
@@ -873,6 +890,22 @@ packages:
 
 snapshots:
 
+  '@audiorecorder/common@1.0.0':
+    dependencies:
+      '@audiorecorder/common': '@audiorecorder/server@file:packages/server'
+    transitivePeerDependencies:
+      - supports-color
+
+  '@audiorecorder/server@file:packages/server':
+    dependencies:
+      '@audiorecorder/common': 1.0.0
+      commander: 12.1.0
+      cors: 2.8.5
+      express: 4.21.2
+      jsonwebtoken: 9.0.2
+    transitivePeerDependencies:
+      - supports-color
+
   '@jridgewell/sourcemap-codec@1.5.0': {}
 
   '@nodelib/fs.scandir@2.1.5':
@@ -1120,6 +1153,8 @@ snapshots:
   dir-glob@3.0.1:
     dependencies:
       path-type: 4.0.0
+
+  dotenv@16.4.7: {}
 
   dunder-proto@1.0.0:
     dependencies:

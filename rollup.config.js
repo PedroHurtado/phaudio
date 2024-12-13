@@ -23,13 +23,20 @@ export default [
   },
   //serve
   {
-    input: "./packages/server/lib/server_recorder.js",
+    input: "./packages/server/lib/160world-server.js",
 
     output: {
       file: "./packages/server/dist/160world-server",
       format: "es",
     },
-    external: ["express", "cors", "jsonwebtoken", "@audiorecorder/common"],
+    external: [
+        "express", 
+        "cors", 
+        "jsonwebtoken", 
+        "@audiorecorder/common",
+        "commander",
+        "dotenv",
+      ],
     plugins: [
       del(),
       alias({
