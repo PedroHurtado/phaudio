@@ -10,8 +10,5 @@
     "dist"
   ],
   "author": "pedrohurt@gmail.com",
-  "license": "MIT",
-  "dependencies": {
-    "@audiorecorder/common": "file:"
-  }
+  "license": "MIT"  
 }

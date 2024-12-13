@@ -46,20 +46,13 @@ importers:
         specifier: workspace:^
         version: link:../common
 
-  packages/common:
-    dependencies:
-      '@audiorecorder/common':
-        specifier: 'file:'
-        version: 'link:'
+  packages/common: {}
 
   packages/server:
     dependencies:
       '@audiorecorder/common':
         specifier: ^1.0.0
         version: 1.0.0
-      '@audiorecorder/server':
-        specifier: 'file:'
-        version: 'link:'
       commander:
         specifier: ^12.1.0
         version: 12.1.0
@@ -76,11 +69,7 @@ importers:
         specifier: ^9.0.2
         version: 9.0.2
 
-  packages/worker_audio:
-    dependencies:
-      '@audiorecorder/worker_audio':
-        specifier: 'file:'
-        version: 'link:'
+  packages/worker_audio: {}
 
   packages/worker_silero:
     dependencies:

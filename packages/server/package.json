@@ -9,8 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@audiorecorder/common": "^1.0.0",
-    "@audiorecorder/server": "file:",
+    "@audiorecorder/common": "^1.0.0",    
     "commander": "^12.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
