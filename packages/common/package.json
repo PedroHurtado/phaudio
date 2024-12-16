@@ -1,6 +1,6 @@
 {
   "name": "@audiorecorder/common",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "main": "dist/index.esm.js",
   "module": "dist/index.esm.js",
@@ -10,5 +10,5 @@
     "dist"
   ],
   "author": "pedrohurt@gmail.com",
-  "license": "MIT"  
+  "license": "MIT"
 }

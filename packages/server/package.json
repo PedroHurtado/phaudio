@@ -1,6 +1,6 @@
 {
   "name": "@audiorecorder/server",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "type": "module",
   "files": [
@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@audiorecorder/common": "^1.0.0",    
+    "@audiorecorder/common": "^2.0.0",
     "commander": "^12.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
