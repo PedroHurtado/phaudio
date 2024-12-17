@@ -12,7 +12,7 @@ export class Context {
 
     this.emiter.on(Message.Frame, (data)=>{
       const frame = new Float32Array(data);      
-      this.workerEmiter.emit(Message.Frame, frame)
+      this.workerEmiter.emit(Message.Frame, {frame})
     })    
   }  
   static async createWorkletNode(audioContext) {

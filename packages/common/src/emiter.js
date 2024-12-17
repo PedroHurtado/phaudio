@@ -4,7 +4,7 @@ export class Emiter{
          this.worker = worker;
          this.worker.onmessage = ({data})=>{
             const {type,...rest} = data;
-            this.emit(type,rest)
+            this.emit(type,{rest})
          };
     }
     on(type,cb){

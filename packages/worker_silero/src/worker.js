@@ -10,6 +10,7 @@ let options;
 let frameProcesor;
 let sessionRoom;
 let diff;
+let url_server;
 
 
 const emiter = new Emiter(self);
@@ -20,6 +21,7 @@ emiter.on(Message.Start, async (data) => {
   options = data.options;
   sessionRoom = data.sessionRoom;
   diff = data.diff;
+  url_server = data.url_server
   try {
     silero = await run(data.ort.model);
     frameProcesor = getProcesor();
@@ -41,7 +43,7 @@ emiter.on(Message.Frame, async (frame) => {
     } else if (msg === Message.SpeechEnd) {
     
       const serverData = createMessage(audio, { sessionRoom, start, start: start + diff })
-      const transcription = await sendData('http://localhost:3000/upload', serverData)
+      const transcription = await sendData(`${url_server}/upload`, serverData)
       emiter.emit(Message.SpeechEnd,{serverData, transcription})      
       
     }

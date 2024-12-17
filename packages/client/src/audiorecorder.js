@@ -47,7 +47,8 @@ export class AudioRecorder {
         ort: config.silero.ort,
         options: config.options,
         sessionRoom,
-        diff
+        diff,
+        url_server:config.url_server
       })
 
       emiter.on(Message.Ok, async()=>{
