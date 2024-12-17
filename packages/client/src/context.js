@@ -1,14 +1,19 @@
 import { config } from "./config";
+import { Emiter, Message } from "@audiorecorder/common";
+
 
 export class Context {
-  constructor(audioContext, procesor, worker) {
+  constructor(audioContext, procesor, worker, workerEmiter) {
     this.audioContext = audioContext;    
     this.procesor = procesor;    
-    this.worker = worker;    
-    this.procesor.port.onmessage = ({ data }) => {
+    this.worker = worker;   
+    this.emiter = new Emiter(this.procesor.port);
+    this.workerEmiter = workerEmiter;
+
+    this.emiter.on(Message.Frame, (data)=>{
       const frame = new Float32Array(data);      
-      this.worker.postMessage({ type: "frame",  frame});
-    };    
+      this.workerEmiter.emit(Message.Frame, frame)
+    })    
   }  
   static async createWorkletNode(audioContext) {
     await audioContext.audioWorklet.addModule(
@@ -21,7 +26,7 @@ export class Context {
       },
     });
   }
-  static async new(stream, worker, sessionRoom) {
+  static async new(stream, worker, workerEmiter) {
     const audioContext = new AudioContext();
     const source = audioContext.createMediaStreamSource(stream);
     
@@ -33,7 +38,7 @@ export class Context {
     const procesor = await this.createWorkletNode(audioContext);  
     //source.connect(highPassFilter).connect(procesor);    
     source.connect(procesor)
-    const context = new Context(audioContext, procesor, worker);    
+    const context = new Context(audioContext, procesor, worker, workerEmiter);    
     return context;
   }
 }

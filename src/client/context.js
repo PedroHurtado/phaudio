@@ -1,5 +1,4 @@
 import { AudioRecorder } from "./audiorecorder.js";
-
 export class Context {
   constructor(audioContext, procesor, worker) {
     this.audioContext = audioContext;    
@@ -25,9 +24,9 @@ export class Context {
     const audioContext = new AudioContext();
     const source = audioContext.createMediaStreamSource(stream);
     
-    const highPassFilter = audioContext.createBiquadFilter();
+    /*const highPassFilter = audioContext.createBiquadFilter();
     highPassFilter.type = 'highpass';
-    highPassFilter.frequency.value = 400;    
+    highPassFilter.frequency.value = 400;*/    
 
     
     const procesor = await this.createWorkletNode(audioContext);  

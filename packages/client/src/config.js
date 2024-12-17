@@ -9,9 +9,7 @@ export const config = {
           numThreads: 1,
           wasmPaths: "wasm/",
         },
-        model: "model.onnx",
-        //model:'https://www.vad.ricky0123.com/silero_vad.onnx'
-        //model:'silero_vad.onnx'
+        model: "model.onnx",        
       },
     },
     recorder_options: {
