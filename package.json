@@ -7,13 +7,13 @@
   "scripts": {
     "pack": "bash ./scripts/npmpack.sh",
     "build": "npx rollup -c rollup.config.js",
-    "copy:silero":"node ./scripts/copy.mjs ./packages/worker_silero/dist ./test/worker_silero",
-    "copy:audio":"node ./scripts/copy.mjs ./packages/worker_audio/dist ./test/worker_audio",
+    "copy:silero": "node ./scripts/copy.mjs ./packages/worker_silero/dist ./test/worker_silero",
+    "copy:audio": "node ./scripts/copy.mjs ./packages/worker_audio/dist ./test/worker_audio",
     "start": "pnpm run build && pnpm run copy:silero && pnpm run copy:audio && http-server ./test -b",
-    "serve": "node --env-file=.env ."    
+    "serve": "node --env-file=.env ."
   },
   "author": "",
-  "license": "ISC",  
+  "license": "ISC",
   "devDependencies": {
     "@changesets/cli": "^2.27.10",
     "@rollup/plugin-alias": "^5.1.1",
@@ -22,7 +22,6 @@
     "@rollup/plugin-node-resolve": "^15.3.0",
     "rollup": "^4.28.1",
     "rollup-plugin-copy": "^3.5.0",
-    "rollup-plugin-del": "^1.0.1",
-    "rollup-plugin-visualizer": "^5.12.0"
+    "rollup-plugin-del": "^1.0.1"
   }
 }

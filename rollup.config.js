@@ -6,7 +6,6 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import json from "@rollup/plugin-json";
 import copy from "rollup-plugin-copy";
-import { visualizer } from "rollup-plugin-visualizer";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -58,7 +57,7 @@ export default [
   {
     input: "./packages/client/src/main.js",
     output: {
-      file: "./packages/client/dist/index.esm.js",
+      file: "./packages/client/dist/index.js",
       format: "es",
       sourcemap: true
     },
@@ -91,7 +90,7 @@ export default [
   {
     input: "./packages/worker_silero/src/worker.js",
     output: {
-      file: "./packages/worker_silero/dist/index.esm.js",
+      file: "./packages/worker_silero/dist/index.js",
       format: "es",
       sourcemap: true
     },
@@ -120,8 +119,7 @@ export default [
         ],
       }),
       resolve(),
-      commonjs(),
-      visualizer({ filename: "stats.html" }),
+      commonjs(),     
     ],
   },
 ];
