@@ -11,16 +11,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default [
-  //common
-  {
-    input: "./packages/common/index.js",
-    output: {
-      file: "./packages/common/dist/index.js",
-      format: "es",
-      sourcemap: true
-    },
-    plugins: [del()],
-  },
+  
   //serve
   {
     input: "./packages/server/lib/160world-server.js",
@@ -33,8 +24,7 @@ export default [
     external: [
         "express", 
         "cors", 
-        "jsonwebtoken", 
-        "@audiorecorder/common",
+        "jsonwebtoken",         
         "commander",
         "dotenv",
       ],
@@ -52,35 +42,12 @@ export default [
       resolve(),
       commonjs(),
     ],
-  },
-  //client
-  {
-    input: "./packages/client/src/main.js",
-    output: {
-      file: "./packages/client/dist/index.js",
-      format: "es",
-      sourcemap: true
-    },
-    external: ["@audiorecorder/common"],
-    plugins: [
-      del(),
-      alias({
-        entries: [
-          {
-            find: "@audiorecorder/common",
-            replacement: path.resolve(__dirname, "packages/common"),
-          },
-        ],
-      }),
-      resolve(),
-      commonjs(),
-    ],
-  },
+  },  
   //workletNode
   {
     input: "./packages/worker_audio/src/procesor.js",
     output: {
-      file: "./packages/worker_audio/dist/index.js",
+      file: "./test/worker_audio/index.js",
       format: "iife",
       sourcemap: true
     },
@@ -90,12 +57,11 @@ export default [
   {
     input: "./packages/worker_silero/src/worker.js",
     output: {
-      file: "./packages/worker_silero/dist/index.js",
+      file: "./test/worker_silero/index.js",
       format: "es",
       sourcemap: true
     },
-    external: [
-      "@audiorecorder/common",
+    external: [      
       "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/+esm"
     ],
     plugins: [
@@ -105,11 +71,11 @@ export default [
         targets: [
           {
             src: "packages/worker_silero/src/*.onnx",
-            dest: "packages/worker_silero/dist",
+            dest: "test/worker_silero",
           },
           {
             src: "packages/worker_silero/src/wasm/*.*",
-            dest: "packages/worker_silero/dist/wasm",
+            dest: "test/worker_silero/wasm",
           },
         ],
       }),

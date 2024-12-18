@@ -8,7 +8,7 @@ export class Emiter{
          };
     }
     on(type,cb){
-        const suscriptors = this.suscriptions.get(type)
+        let suscriptors = this.suscriptions.get(type)
         if (!suscriptors){
             suscriptors=[]
         }

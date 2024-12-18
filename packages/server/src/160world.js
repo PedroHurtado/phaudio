@@ -8,7 +8,7 @@ function getUrl(session,path){
 const headers={
         autorization:`basic ${credentials}`
 }
-export async function validate(session){
+export async function validate(session){    
     const url = getUrl(session,'validate')
     const response = await fetch(url,{
         method:'GET',

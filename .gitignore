@@ -4,7 +4,5 @@ node_modules
 *.env
 build
 dist
-test/client
-test/worker_silero
-test/worker_audio
+test
 npm_packages
