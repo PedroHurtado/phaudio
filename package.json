@@ -7,9 +7,10 @@
   "scripts": {
     "pack": "bash ./scripts/npmpack.sh",
     "build": "npx rollup -c rollup.config.js",
+    "copy:client":"node ./scripts/copy.mjs ./packages/client/dist ./test/client",
     "copy:silero": "node ./scripts/copy.mjs ./packages/worker_silero/dist ./test/worker_silero",
     "copy:audio": "node ./scripts/copy.mjs ./packages/worker_audio/dist ./test/worker_audio",
-    "start": "pnpm run build && pnpm run copy:silero && pnpm run copy:audio && http-server ./test -b",
+    "start": "pnpm run build && pnpm run copy:client &&  pnpm run copy:silero && pnpm run copy:audio && http-server ./test -b",
     "serve": "node --env-file=.env ."
   },
   "author": "",

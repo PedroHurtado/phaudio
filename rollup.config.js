@@ -94,7 +94,10 @@ export default [
       format: "es",
       sourcemap: true
     },
-    external: ["https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/+esm"],
+    external: [
+      "@audiorecorder/common",
+      "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/+esm"
+    ],
     plugins: [
       del(),
       copy({
