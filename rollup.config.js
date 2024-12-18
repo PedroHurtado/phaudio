@@ -18,6 +18,7 @@ export default [
     output: {
       file: "./packages/common/dist/index.esm.js",
       format: "es",
+      sourcemap: true
     },
     plugins: [del()],
   },
@@ -28,6 +29,7 @@ export default [
     output: {
       file: "./packages/server/dist/160world-server",
       format: "es",
+      sourcemap: true
     },
     external: [
         "express", 
@@ -58,6 +60,7 @@ export default [
     output: {
       file: "./packages/client/dist/index.esm.js",
       format: "es",
+      sourcemap: true
     },
     external: ["@audiorecorder/common"],
     plugins: [
@@ -80,6 +83,7 @@ export default [
     output: {
       file: "./packages/worker_audio/dist/index.js",
       format: "iife",
+      sourcemap: true
     },
     plugins: [del(), resolve(), commonjs()],
   },
@@ -89,6 +93,7 @@ export default [
     output: {
       file: "./packages/worker_silero/dist/index.esm.js",
       format: "es",
+      sourcemap: true
     },
     external: ["https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/+esm"],
     plugins: [
