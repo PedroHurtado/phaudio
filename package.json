@@ -5,9 +5,10 @@
   "main": "./src/server/serve.js",
   "type": "module",
   "scripts": {
+    "dev": "vite",
     "pack": "bash ./scripts/npmpack.sh",
     "build": "npx rollup -c rollup.config.js",
-    "copy:client":"node ./scripts/copy.mjs ./packages/client/dist ./test/client",
+    "copy:client": "node ./scripts/copy.mjs ./packages/client/dist ./test/client",
     "copy:silero": "node ./scripts/copy.mjs ./packages/worker_silero/dist ./test/worker_silero",
     "copy:audio": "node ./scripts/copy.mjs ./packages/worker_audio/dist ./test/worker_audio",
     "start": "pnpm run build && pnpm run copy:client &&  pnpm run copy:silero && pnpm run copy:audio && http-server ./test -b",
@@ -23,6 +24,7 @@
     "@rollup/plugin-node-resolve": "^15.3.0",
     "rollup": "^4.28.1",
     "rollup-plugin-copy": "^3.5.0",
-    "rollup-plugin-del": "^1.0.1"
+    "rollup-plugin-del": "^1.0.1",
+    "vite": "^6.0.3"
   }
 }
