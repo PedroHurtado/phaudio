@@ -1,3 +1,3 @@
-import {main} from '@audiorecorder/client'
+import {init} from '@audiorecorder/client'
 
-main();
+init();
