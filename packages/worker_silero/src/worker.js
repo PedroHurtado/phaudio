@@ -25,7 +25,7 @@ emiter.on(Message.Start, async (data) => {
   try {
     silero = await run(data.ort.model);
     frameProcesor = getProcesor();
-    self.postMessage("OK");
+    emiter.emit(Message.Ok, {});    
   } catch (err) {
     console.log(err);
   }

@@ -3,7 +3,7 @@ export const config = {
     url_worker_audio: "worker_audio/procesor.js",
     url_procesor: "",
     silero: {
-      url: "worker_silero/worker.js",
+      url: "worker_silero/index.js",
       ort: {
         wasm: {
           numThreads: 1,

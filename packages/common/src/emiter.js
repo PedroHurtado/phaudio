@@ -4,8 +4,15 @@ export class Emiter{
          this.worker = worker;
          this.worker.onmessage = ({data})=>{
             const {type,...rest} = data;
-            this.emit(type,{rest})
+            this.#notify(type,rest)
          };
+    }
+    #notify(type,data){    
+        const suscriptors = this.suscriptions.get(type)
+        if(suscriptors){
+            suscriptors.forEach(s=>s(data))
+        }         
+    
     }
     on(type,cb){
         let suscriptors = this.suscriptions.get(type)
@@ -15,15 +22,8 @@ export class Emiter{
         suscriptors.push(cb)    
         this.suscriptions.set(type,suscriptors)
     }
-    emit(type,data){
-        if(this.worker){
-            this.worker.postMessage({type,...data})
-        }else{
-            const suscriptors = this.suscriptions.get(type)
-            if(suscriptors){
-                suscriptors.forEach(s({type,...data}))
-            }           
-        }
+    emit(type,data){        
+        this.worker.postMessage({type,...data})        
     }
     dispose(){
         if(this.worker){
