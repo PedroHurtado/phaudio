@@ -5,9 +5,8 @@
   "main": "./src/server/serve.js",
   "type": "module",
   "scripts": {
-    "start":"npm-run-all --parallel rollup:dev serve vite",    
-    "vite":"vite",
-    "rollup:dev": "npx rollup -c rollup.config.dev.js --watch --silent",
+    "start":"npm-run-all --parallel serve vite",    
+    "vite":"vite",    
     "pack": "bash ./scripts/npmpack.sh",
     "build": "npx rollup -c rollup.config.js",
     "serve": "node --env-file=.env ./packages/server/dist/160world-server"
