@@ -8,5 +8,5 @@ export async function login(session){
         },
         body:JSON.stringify(session)
      })
-     console.log(response)
+     return response.json();
 }
