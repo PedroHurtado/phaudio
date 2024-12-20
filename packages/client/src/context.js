@@ -11,7 +11,7 @@ export class Context {
     this.workerEmiter = workerEmiter;
 
     this.emiter.on(Message.Frame, (data)=>{
-      const frame = new Float32Array(data);      
+      const frame = new Float32Array(data.frame);      
       this.workerEmiter.emit(Message.Frame, {frame})
     })    
   }  

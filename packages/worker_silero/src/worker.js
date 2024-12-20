@@ -11,7 +11,7 @@ let frameProcesor;
 let sessionRoom;
 let diff;
 let url_server;
-
+let start;
 
 const emiter = new Emiter(self);
 
@@ -31,9 +31,9 @@ emiter.on(Message.Start, async (data) => {
   }
 })
 
-emiter.on(Message.Frame, async (frame) => {
+emiter.on(Message.Frame, async ({frame}) => {
   try {
-    let start;
+    
     const result = await frameProcesor.process(frame);
     const { msg, audio } = result;
     if (msg === Message.SpeechStart) {

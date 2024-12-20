@@ -1,4 +1,5 @@
 import { Resampler } from "./resampler.js";
+import {Emiter, Message} from '@audiorecorder/common'
 class AudioProcessor extends AudioWorkletProcessor {  
   constructor(options) {
     super();
@@ -8,6 +9,7 @@ class AudioProcessor extends AudioWorkletProcessor {
       targetSampleRate: 16000,
       targetFrameSize: 1536,
     });
+    this.emiter = new Emiter(this.port)
   }
 
   process(inputs) {
@@ -16,7 +18,8 @@ class AudioProcessor extends AudioWorkletProcessor {
 
     const frames = this.resampler.process(input[0]);
     for (const frame of frames) {
-      this.port.postMessage(frame.buffer);
+      this.emiter.emit(Message.Frame, {frame :frame.buffer})
+      
     }
 
     return true;

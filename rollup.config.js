@@ -60,7 +60,10 @@ export default [
       file: "./packages/client/dist/index.js",
       format: "es",
       sourcemap: true
-    },    
+    }, 
+    external:[
+      "@audiorecorder/common"
+    ],   
     plugins: [
       del(),
       alias({
@@ -82,8 +85,19 @@ export default [
       file: "./packages/worker_audio/dist/index.js",
       format: "iife",
       sourcemap: true
-    },
-    plugins: [del(), resolve(), commonjs()],
+    },    
+    plugins: [del(), 
+      alias({
+        entries: [
+          {
+            find: "@audiorecorder/common",
+            replacement: path.resolve(__dirname, "packages/common"),
+          },
+        ],
+      }),
+      resolve(), 
+      commonjs()
+    ],
   },
   //worker silero
   {
@@ -93,7 +107,8 @@ export default [
       format: "es",
       sourcemap: true
     },
-    external: [      
+    external: [   
+      "@audiorecorder/common",   
       "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/+esm"
     ],
     plugins: [

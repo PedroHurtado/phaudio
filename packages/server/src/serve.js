@@ -11,7 +11,8 @@ import { validate, transcript } from "./160world.js";
 const corsOptions = {
   origin: "*",
   methods: ["POST", "HEAD"],
-  exposedHeaders: ["server-date"],
+  exposedHeaders: ["server-date"],  
+  maxAge:3600
 };
 
 const app = express();

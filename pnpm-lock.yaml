@@ -71,7 +71,11 @@ importers:
         specifier: ^9.0.2
         version: 9.0.2
 
-  packages/worker_audio: {}
+  packages/worker_audio:
+    dependencies:
+      '@audiorecorder/common':
+        specifier: workspace:^
+        version: link:../common
 
   packages/worker_silero:
     dependencies:
