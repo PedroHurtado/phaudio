@@ -23,8 +23,7 @@ export default [
     },
     external: [        
     ],
-    plugins: [
-      del(),
+    plugins: [      
       alias({
         entries: [
           {
@@ -47,7 +46,7 @@ export default [
       format: "iife",
       sourcemap: true
     },
-    plugins: [del(), resolve(), commonjs()],
+    plugins: [resolve(), commonjs()],
   },
   //worker silero
   {
@@ -60,8 +59,7 @@ export default [
     external: [      
       "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/+esm"
     ],
-    plugins: [
-      del(),
+    plugins: [      
       copy({
         hook: "writeBundle",
         targets: [

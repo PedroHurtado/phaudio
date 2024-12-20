@@ -5,9 +5,9 @@
   "main": "./src/server/serve.js",
   "type": "module",
   "scripts": {
-    "start":"npm-run-all --parallel serve vite",    
-    "vite":"vite",   
-    "rollup:dev": "npx rollup -c rollup.config.dev.js --watch --silent",
+    "dev:vite": "vite",
+    "dev:rollup": "rollup -c rollup.config.dev.js --watch",
+    "dev": "run-p dev:rollup serve dev:vite",
     "pack": "bash ./scripts/npmpack.sh",
     "build": "npx rollup -c rollup.config.js",
     "serve": "node --env-file=.env ./test/server/160world-server"
@@ -25,5 +25,8 @@
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-del": "^1.0.1",
     "vite": "^6.0.3"
+  },
+  "dependencies": {
+    "chokidar": "^4.0.3"
   }
 }
