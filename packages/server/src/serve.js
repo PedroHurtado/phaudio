@@ -7,7 +7,7 @@ import { transcribe } from "./openai.js";
 import { deserialize } from "@audiorecorder/common";
 import { convertVTTToMilliseconds } from "./vtt.js";
 import { validate, transcript } from "./160world.js";
-
+import {authorization} from './authorization.js'
 const corsOptions = {
   origin: "*",
   methods: ["POST", "HEAD"],
@@ -27,11 +27,7 @@ app.head("/timer", (req, res) => {
   res.end();
 });
 
-function autorization() {
-  return function (req, res, next) {
-    next();
-  };
-}
+
 
 app.post("/login", async (req, res) => {
   const session = req.body;
@@ -43,7 +39,7 @@ app.post("/login", async (req, res) => {
   }
 });
 
-app.post("/upload", autorization(), async (req, res) => {
+app.post("/upload", authorization(), async (req, res) => {
   let chunks = [];
   req.on("data", (chunk) => {
     chunks.push(chunk);

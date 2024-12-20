@@ -10,7 +10,7 @@ export function getJwt(session){
     },process.env.KEY, {algorithm:"HS256"})
 
     return {
-        schema:'bearer',
+        schema:'Bearer',
         token,
         exp:3600
     }

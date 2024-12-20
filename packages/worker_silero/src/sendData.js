@@ -3,7 +3,7 @@ import {get} from '@audiorecorder/common'
 
 export async function sendData(url, int16Array) {
   
-  const {schema,token} = await get('user');
+  const {schema,token} = await get('user') || {};
 
   const response = await fetch(url, {
     method: "POST",
