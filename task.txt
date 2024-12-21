@@ -3,3 +3,7 @@ Tareas
 		Dependendias externas no se deben de copiar al buddle
 	2. Conectar con la api de 160world
 	3. Refactor->control de exceptions
+
+	pnpm changeset
+	pnpm changeset version
+	pnpm changeset publish
