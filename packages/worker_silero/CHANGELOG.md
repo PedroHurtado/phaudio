@@ -1,5 +1,11 @@
 # @audiorecorder/worker_silero
 
+## 0.1.2
+
+### Patch Changes
+
+- script copy
+
 ## 0.1.1
 
 ### Patch Changes
