@@ -1,8 +1,8 @@
 {
   "name": "@audiorecorder/worker_audio",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
-  "type":"module",
+  "type": "module",
   "files": [
     "dist",
     "scripts"

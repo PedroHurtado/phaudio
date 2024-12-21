@@ -1,5 +1,11 @@
 # @audiorecorder/worker_audio
 
+## 0.1.1
+
+### Patch Changes
+
+- Change postinstall
+
 ## 0.1.0
 
 ### Minor Changes
