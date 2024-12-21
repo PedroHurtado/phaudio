@@ -5,7 +5,7 @@
   "files": [
     "dist",
     "scripts"
-  ],  
+  ],
   "scripts": {
     "postinstall": "node node_modules/@audiorecorder/worker_silero/scripts/copy.mjs node_modules/@audiorecorder/worker_silero/dist public/worker_silero"
   },
