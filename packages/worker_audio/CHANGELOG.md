@@ -1,5 +1,13 @@
 # @audiorecorder/worker_audio
 
+## 0.1.3
+
+### Patch Changes
+
+- Remove private methods
+- Updated dependencies
+  - @audiorecorder/common@0.1.1
+
 ## 0.1.2
 
 ### Patch Changes

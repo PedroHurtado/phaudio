@@ -1,5 +1,13 @@
 # @audiorecorder/worker_silero
 
+## 0.1.4
+
+### Patch Changes
+
+- Remove private methods
+- Updated dependencies
+  - @audiorecorder/common@0.1.1
+
 ## 0.1.3
 
 ### Patch Changes

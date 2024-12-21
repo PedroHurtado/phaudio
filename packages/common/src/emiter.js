@@ -4,10 +4,10 @@ export class Emiter{
          this.worker = worker;
          this.worker.onmessage = ({data})=>{
             const {type,...rest} = data;
-            this.#notify(type,rest)
+            this._notify(type,rest)
          };
     }
-    #notify(type,data){    
+    _notify(type,data){    
         const suscriptors = this.suscriptions.get(type)
         if(suscriptors){
             suscriptors.forEach(s=>s(data))
