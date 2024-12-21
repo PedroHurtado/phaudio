@@ -3,14 +3,13 @@
   "version": "0.1.0",
   "description": "",
   "main": "dist/index.js",
+  "module":"dist/index.js",
+  "type":"modules",
   "files": [
     "dist"
-  ],
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  ],  
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@audiorecorder/common": "workspace:^"
   }

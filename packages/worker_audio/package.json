@@ -2,15 +2,16 @@
   "name": "@audiorecorder/worker_audio",
   "version": "0.1.0",
   "description": "",
+  "type":"module",
   "files": [
     "dist",
     "scripts"
   ],
   "scripts": {
-    "postinstall": "node node_modules/@audiorecorder/worker_audio/scripts/copy.mjs node_modules/@audiorecorder/worker_audio/dist public/worker_audio"
+    "postinstall": "node scripts/copy.mjs node_modules/@audiorecorder/worker_audio/dist public/worker_audio"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@audiorecorder/common": "workspace:^"
   }
