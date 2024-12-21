@@ -1,5 +1,11 @@
 # @audiorecorder/worker_silero
 
+## 0.1.3
+
+### Patch Changes
+
+- Include common in budle
+
 ## 0.1.2
 
 ### Patch Changes

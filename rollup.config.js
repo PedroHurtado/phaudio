@@ -116,8 +116,7 @@ export default [
       format: "es",
       sourcemap: true
     },
-    external: [   
-      "@audiorecorder/common",   
+    external: [           
       "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/+esm"
     ],
     plugins: [
