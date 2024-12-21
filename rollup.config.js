@@ -86,7 +86,16 @@ export default [
       format: "iife",
       sourcemap: true
     },    
-    plugins: [del(), 
+    plugins: [del(),
+      copy({
+        hook: "writeBundle",
+        targets: [          
+          {
+            src: "scripts/copy.mjs",
+            dest: "packages/worker_audio/scripts",
+          },
+        ],
+      }), 
       alias({
         entries: [
           {
@@ -123,6 +132,10 @@ export default [
           {
             src: "packages/worker_silero/src/wasm/*.*",
             dest: "packages/worker_silero/dist/wasm",
+          },
+          {
+            src: "scripts/copy.mjs",
+            dest: "packages/worker_silero/scripts",
           },
         ],
       }),

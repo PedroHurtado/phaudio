@@ -3,10 +3,11 @@
   "version": "2.0.0",
   "description": "",
   "files": [
-    "dist"
+    "dist",
+    "scripts"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "node node_modules/@audiorecorder/worker_audio/scripts/copy.mjs node_modules/@audiorecorder/worker_audio/dist public/worker_audio"
   },
   "author": "",
   "license": "ISC",

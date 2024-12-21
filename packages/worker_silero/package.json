@@ -3,10 +3,11 @@
   "version": "2.0.0",
   "description": "",
   "files": [
-    "dist"
+    "dist",
+    "scripts"
   ],  
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "node node_modules/@audiorecorder/worker_silero/scripts/copy.mjs node_modules/@audiorecorder/worker_silero/dist public/worker_silero"
   },
   "author": "",
   "license": "ISC",

@@ -4,11 +4,13 @@
 directorio_paquetes="./packages"
 directorio_salida="./npm_packages"
 
-# Crear directorio de salida si no existe
-if [ ! -d "$directorio_salida" ]; then
-  mkdir -p "$directorio_salida"
-  echo "📁 Creado el directorio de salida: $directorio_salida"
+# Eliminar el contenido del directorio de salida si existe y luego crearlo
+if [ -d "$directorio_salida" ]; then
+  rm -rf "$directorio_salida"
+  echo "🗑️  Eliminado el contenido del directorio de salida: $directorio_salida"
 fi
+mkdir -p "$directorio_salida"
+echo "📁 Creado el directorio de salida: $directorio_salida"
 
 # Verificar que el directorio de paquetes existe
 if [ ! -d "$directorio_paquetes" ]; then

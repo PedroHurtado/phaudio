@@ -7,7 +7,7 @@
     "dev:vite": "vite",
     "dev:rollup": "rollup -c --watch",
     "dev": "run-p dev:rollup serve dev:vite",
-    "dev:serverless":"run-p dev:rollup dev:vite",
+    "dev:serverless": "run-p dev:rollup dev:vite",
     "pack": "bash ./scripts/npmpack.sh",
     "build": "npx rollup -c",
     "serve": "node --env-file=.env ./packages/server/dist/160world-server"
@@ -26,5 +26,5 @@
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-del": "^1.0.1",
     "vite": "^6.0.3"
-  }
+  }  
 }
