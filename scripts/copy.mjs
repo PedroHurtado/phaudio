@@ -1,5 +1,5 @@
 import { mkdir, readdir, copyFile, rm } from 'fs/promises';
-import { join } from 'path';
+import { resolve, join } from 'path';
 
 export async function copyFilesIterative(source, destination) {
 
@@ -39,10 +39,9 @@ if (args.length !== 2) {
     console.error('Uso: node copyFiles.js <directorio_origen> <directorio_destino>');
     process.exit(1);
 }
+const [source, destination] = args.map((arg) => resolve(arg))
 
-const [sourceDir, destinationDir] = args;
 
-
-copyFilesIterative(sourceDir, destinationDir)
+copyFilesIterative(source, destination)
     .then(() => console.log('Copia completada.'))
     .catch((err) => console.error(`Error general: ${err.message}`));
