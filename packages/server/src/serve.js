@@ -1,10 +1,10 @@
 import express from "express";
 import cors from "cors";
 import { getJwt } from "./jwt.js";
-
+import 'express-async-errors';
 import { createServer } from "http";
 import { transcribe } from "./openai.js";
-import { deserialize } from "@audiorecorder/common";
+import { deserialize, ErrorBase } from "@audiorecorder/common";
 import { convertVTTToMilliseconds } from "./vtt.js";
 import { validate, transcript } from "./160world.js";
 import {authorization} from './authorization.js'
@@ -20,11 +20,13 @@ const app = express();
 app.use(cors(corsOptions));
 app.use(express.json());
 
-app.head("/timer", (req, res) => {
+
+app.head("/timer", async (_, res, next) => {
   const date = Date.now();
   res.set("server-date", date);
   res.set("Timing-Allow-Origin", "*");
-  res.status(204).send();
+  throw new ErrorBase(400);
+  //res.status(204).send();
 });
 
 
@@ -70,6 +72,15 @@ app.post("/upload", authorization(), async (req, res) => {
     console.error("Error en la solicitud:", err);
     res.status(500).send("Error en el flujo de datos");
   });
+});
+
+app.use((error,req, res, next) => {
+  if(error instanceof ErrorBase){
+    res.status(error.status).send('Error en el JSON');
+  }
+  else{
+    res.status(500).send('Error en el servidor');
+  }
 });
 
 export function startServer(port) {

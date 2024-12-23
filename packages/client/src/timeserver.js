@@ -1,10 +1,12 @@
+import { resolve } from "@audiorecorder/common"
 import { config } from "./config"
 
 export async function getTimeServer() {
     let ttfb=0
     const url = `${config.url_server}/timer`
     const timerClient = Date.now()
-    const response = await fetch(url, { method: "HEAD" })
+    const response = await fetch(url, { method: "HEAD" })    
+    resolve(response);
     const timeServer = Number(response.headers.get('server-date'))
     const diff = timeServer - timerClient
     const entry = await waitForEntry(url)
