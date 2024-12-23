@@ -1,3 +1,4 @@
+import { resolve } from "@audiorecorder/common";
 
 const URL = process.env.OPENAI_URL
 const token = process.env.OPENAI_TOKEN  
@@ -15,9 +16,8 @@ export async function transcribe(data,start) {
       Authorization: `Bearer ${token}`,
     },
   });
-  console.log(response.status)
-  return await response.text();
+  return resolve(response);  
 }
 function createFile(data) {
-  return new File([data], "file.webm", {});
+  return new File([data], "file", {});
 }

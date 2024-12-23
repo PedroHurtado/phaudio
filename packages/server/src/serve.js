@@ -24,7 +24,7 @@ app.head("/timer", (req, res) => {
   const date = Date.now();
   res.set("server-date", date);
   res.set("Timing-Allow-Origin", "*");
-  res.end();
+  res.status(204).send();
 });
 
 

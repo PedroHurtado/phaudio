@@ -1,3 +1,4 @@
+import { resolve } from "@audiorecorder/common";
 const URL = process.env.URL_SERVER
 const credentials = `${btoa(process.env.API_USER)}:${btoa(process.env.API_TOKEN)}`
 function getUrl(session,path){
@@ -14,7 +15,7 @@ export async function validate(session){
         method:'GET',
         headers:headers,        
     })
-    return (response.status === 200)        
+    return resolve(response);
 }
 export async function transcript({sessionRoom}, data) {
     const url = getUrl(sessionRoom, 'transcript')
@@ -22,7 +23,6 @@ export async function transcript({sessionRoom}, data) {
         method:'POST',
         headers:{...headers,... {'content-type':'aplicación/json'}},
         body:JSON.stringify(data)
-    })
-    const text = await response.text()
-    console.log(text)
+    })    
+    return resolve(response);
 }
