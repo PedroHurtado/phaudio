@@ -22,5 +22,5 @@ async function waitForEntry(url, retries = 5, interval = 100) {
         }        
         await new Promise(resolve => setTimeout(resolve, interval));
     }
-    return null; // No se encontró la entrada
+    return null; 
 }
