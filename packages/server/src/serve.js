@@ -21,14 +21,8 @@ const app = express();
 app.use(cors(corsOptions));
 app.use(express.json());
 
-app.head("/timer", async (_, res) => {
-  const date = Date.now();
-  res.set("server-date", date);
-  res.set("Timing-Allow-Origin", "*");  
-  res.status(204).send();
-});
 
-app.post("/login", async (req, res) => {
+app.post("/login", async (req, res) => {  
   const session = req.body;
   const result = await validate(session);
   if (result) {
@@ -60,13 +54,20 @@ app.post("/upload", authorization(), async (req, res) => {
   res.json(response);
 });
 
+app.head("/timer", async (_, res) => {
+  const date = Date.now();
+  res.set("server-date", date);
+  res.set("Timing-Allow-Origin", "*");  
+ res.status(204).end();
+});
+
 app.use((err, req, res, next) => {
   console.error('Error:', err);
   
   const error = {
     path: req.path,
     timestamp: new Date().toISOString(),
-    status: err instanceof ErrorBase ? err.status : 500,
+    status: err instanceof ErrorBase ? err.code : 500,
     message: err instanceof ErrorBase ? err.message : 'Error interno del servidor'
   };
 
