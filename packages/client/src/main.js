@@ -14,8 +14,6 @@ config.options = {
   minSpeechFrames: 3,
   submitUserSpeechOnPause: false,
 };
-config.url_server = 'http://localhost:3000'
-
 async function init(params) {
   const session = getSession(location.href)
   const diff = await getTimeServer()  
