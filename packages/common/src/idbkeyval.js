@@ -1,5 +1,5 @@
-const dbName = 'myDatabase';
-const storeName = 'myStore';
+const dbName = 'KeyValDb';
+const storeName = 'KeyStore';
 const dbVersion = 1;
 
 function openDB() {
