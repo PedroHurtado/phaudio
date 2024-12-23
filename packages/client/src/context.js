@@ -28,15 +28,8 @@ export class Context {
   }
   static async new(stream, worker, workerEmiter) {
     const audioContext = new AudioContext();
-    const source = audioContext.createMediaStreamSource(stream);
-    
-    const highPassFilter = audioContext.createBiquadFilter();
-    highPassFilter.type = 'highpass';
-    highPassFilter.frequency.value = 400;    
-
-    
-    const procesor = await this.createWorkletNode(audioContext);  
-    //source.connect(highPassFilter).connect(procesor);    
+    const source = audioContext.createMediaStreamSource(stream);    
+    const procesor = await this.createWorkletNode(audioContext);      
     source.connect(procesor)
     const context = new Context(audioContext, procesor, worker, workerEmiter);    
     return context;
