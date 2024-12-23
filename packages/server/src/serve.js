@@ -1,4 +1,3 @@
-import 'express-async-errors'; // Debe ser el primer import
 import express from "express";
 import cors from "cors";
 import { getJwt } from "./jwt.js";
@@ -12,7 +11,7 @@ import { authorization } from './authorization.js';
 const corsOptions = {
   origin: "*",
   methods: ["POST", "HEAD"],
-  exposedHeaders: ["server-date"],  
+  exposedHeaders: ["server-date"],
   maxAge: 3600
 };
 
@@ -21,8 +20,15 @@ const app = express();
 app.use(cors(corsOptions));
 app.use(express.json());
 
+const wrapAsync = (fn) => (req, res, next) => {
+  Promise.resolve(fn(req, res, next)).catch(next);
+};
 
-app.post("/login", async (req, res) => {  
+const addRoute = (method, path, handler) => {
+  app[method](path, wrapAsync(handler));
+};
+
+addRoute("post", "/login", async (req, res) => {  
   const session = req.body;
   const result = await validate(session);
   if (result) {
@@ -32,12 +38,12 @@ app.post("/login", async (req, res) => {
   }
 });
 
-app.post("/upload", authorization(), async (req, res) => {  
-  const chunks = [];  
+addRoute("post", "/upload", authorization(), async (req, res) => {
+  const chunks = [];
   await new Promise((resolve, reject) => {
     req.on("data", chunk => chunks.push(chunk));
     req.on("end", () => resolve());
-    req.on("error", err => reject(new ErrorBase(500,err.message)));
+    req.on("error", err => reject(new ErrorBase(500, err.message)));
   });
 
   const buffer = Buffer.concat(chunks);
@@ -50,20 +56,20 @@ app.post("/upload", authorization(), async (req, res) => {
   const vttResponse = await transcribe(file);
   const response = convertVTTToMilliseconds(vttResponse, json.start);
   await transcript(json, response);
-  
+
   res.json(response);
 });
 
-app.head("/timer", async (_, res) => {
+addRoute("head", "/timer", async (_, res) => {
   const date = Date.now();
   res.set("server-date", date);
-  res.set("Timing-Allow-Origin", "*");  
- res.status(204).end();
+  res.set("Timing-Allow-Origin", "*");
+  res.status(204).end(); 
 });
 
 app.use((err, req, res, next) => {
   console.error('Error:', err);
-  
+
   const error = {
     path: req.path,
     timestamp: new Date().toISOString(),
@@ -78,15 +84,21 @@ app.use((err, req, res, next) => {
   res.status(error.status).json(error);
 });
 
+app.use((req, res) => {
+  res.status(404).json({
+    error: 'Ruta no encontrada',
+  });
+});
+
 export function startServer(port) {
   const PORT = port || 3000;
-  const server = createServer(app); 
- 
+  const server = createServer(app);
+
   server.on('error', (error) => {
     console.error('Server error:', error);
     process.exit(1);
   });
- 
+
   server.listen(PORT, () => {
     console.log(`Servidor escuchando en http://localhost:${PORT}`);
   });

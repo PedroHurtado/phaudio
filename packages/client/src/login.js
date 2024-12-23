@@ -1,3 +1,4 @@
+import { resolve } from "@audiorecorder/common"
 import { config } from "./config"
 export async function login(session){
      const url = `${config.url_server}/login`
@@ -8,5 +9,5 @@ export async function login(session){
         },
         body:JSON.stringify(session)
      })
-     return response.json();
+     return resolve(response)
 }
