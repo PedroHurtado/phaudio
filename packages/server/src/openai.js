@@ -19,5 +19,5 @@ export async function transcribe(data,start) {
   return resolve(response);  
 }
 function createFile(data) {
-  return new File([data], "file", {});
+  return new File([data], "file.wav", {});
 }

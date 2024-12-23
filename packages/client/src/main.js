@@ -3,7 +3,7 @@ import { getSession } from "./getsession.js";
 import { login } from "./login.js";
 import { getTimeServer } from "./timeserver.js";
 import { config } from "./config.js";
-import {add} from '@audiorecorder/common'
+import {add, globalHandler, remove} from '@audiorecorder/common'
 
 config.options = {
   positiveSpeechThreshold: 0.5,
@@ -14,7 +14,8 @@ config.options = {
   minSpeechFrames: 3,
   submitUserSpeechOnPause: false,
 };
-async function init(params) {
+async function init() {
+  const dispose = globalHandler(window);
   const session = getSession(location.href)
   const diff = await getTimeServer()  
   const user = await login(session) 
@@ -34,6 +35,10 @@ async function init(params) {
   });  
   await audioRecorder.start(localStream); 
   add("user", user);
+  return ()=>{
+    remove("user");
+    dispose();    
+  }
 }
 export {init,config}
 
