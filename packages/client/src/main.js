@@ -19,8 +19,7 @@ config.url_server = 'http://localhost:3000'
 async function init(params) {
   const session = getSession(location.href)
   const diff = await getTimeServer()  
-  const user = await login(session)
-  add("user", user);
+  const user = await login(session) 
 
   const audioRecorder = await AudioRecorder.new(
     session,
@@ -36,6 +35,7 @@ async function init(params) {
     video: false,
   });  
   await audioRecorder.start(localStream); 
+  add("user", user);
 }
 export {init,config}
 
