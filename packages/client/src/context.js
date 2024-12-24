@@ -16,9 +16,11 @@ export class Context {
     })
   }
   dispose() {
+    this.procesor.disconnect();
     this.emiter.emit(Message.Close, {});
     this.audioContext.close();
     this.emiter.dispose();
+    this.procesor = null;
     this.audioContext = null;
     this.worker = null;
     this.emiter = null;
@@ -38,7 +40,7 @@ export class Context {
   static async new(stream, worker, workerEmiter) {
     const audioContext = new AudioContext();
     const source = audioContext.createMediaStreamSource(stream);
-    const procesor = await this.createWorkletNode(audioContext);
+    const procesor = await this.createWorkletNode(audioContext);    
     source.connect(procesor)
     const context = new Context(audioContext, procesor, worker, workerEmiter);
     return context;
