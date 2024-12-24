@@ -31,7 +31,14 @@ export class AudioRecorder {
     })    
   }
   async start(stream) {
-    await Context.new(stream, this.worker, this.emiter );
+     this.context = await Context.new(stream, this.worker, this.emiter );
+  }
+  stop() {    
+    this.emiter.emit(Message.Stop, {});
+    this.emiter.dispose();    
+    this.context.dispose();
+    this.emiter = null;
+    this.context = null;
   }
   static createSileroWorker() {
     return new Worker(config.silero.url, {

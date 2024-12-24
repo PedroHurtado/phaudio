@@ -5,15 +5,6 @@ import { getTimeServer } from "./timeserver.js";
 import { config } from "./config.js";
 import { add, globalHandler, remove } from '@audiorecorder/common'
 
-config.options = {
-  positiveSpeechThreshold: 0.5,
-  negativeSpeechThreshold: 0.5 - 0.15,
-  preSpeechPadFrames: 1,
-  redemptionFrames: 8,
-  frameSamples: 1536,
-  minSpeechFrames: 3,
-  submitUserSpeechOnPause: false,
-};
 async function init() {
   try {
     const session = getSession(location.href)
@@ -40,6 +31,7 @@ async function init() {
 
     return async () => {
       await remove("user");
+      audioRecorder.stop();
       dispose();
     }
   } catch (e) {
