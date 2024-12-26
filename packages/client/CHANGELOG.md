@@ -1,5 +1,11 @@
 # @audiorecorder/client
 
+## 0.1.6
+
+### Patch Changes
+
+- script to install workers
+
 ## 0.1.5
 
 ### Patch Changes
