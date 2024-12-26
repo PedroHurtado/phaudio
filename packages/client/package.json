@@ -6,8 +6,8 @@
   "module": "dist/index.js",
   "type": "module",
   "scripts": {
-    "preinstall": "npm install @audiorecorder/worker_audio @audiorecorder/worker_silero",
-    "preuninstall": "npm uninstall @audiorecorder/worker_audio @audiorecorder/worker_silero"
+    "preinstall": "npm install --no-save @audiorecorder/worker_audio @audiorecorder/worker_silero",
+    "preuninstall": "npm uninstall --no-save @audiorecorder/worker_audio @audiorecorder/worker_silero"
   },
   "files": [
     "dist"
