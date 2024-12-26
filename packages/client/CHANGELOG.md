@@ -1,5 +1,11 @@
 # @audiorecorder/client
 
+## 0.1.8
+
+### Patch Changes
+
+- change script
+
 ## 0.1.7
 
 ### Patch Changes
