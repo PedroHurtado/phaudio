@@ -1,5 +1,11 @@
 # @audiorecorder/client
 
+## 0.1.5
+
+### Patch Changes
+
+- change cd per prefix
+
 ## 0.1.4
 
 ### Patch Changes
