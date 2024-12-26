@@ -1,5 +1,13 @@
 # @audiorecorder/worker_audio
 
+## 0.1.4
+
+### Patch Changes
+
+- Control exceptions and install workers
+- Updated dependencies
+  - @audiorecorder/common@0.1.2
+
 ## 0.1.3
 
 ### Patch Changes

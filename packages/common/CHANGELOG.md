@@ -1,5 +1,11 @@
 # @audiorecorder/common
 
+## 0.1.2
+
+### Patch Changes
+
+- Control exceptions and install workers
+
 ## 0.1.1
 
 ### Patch Changes

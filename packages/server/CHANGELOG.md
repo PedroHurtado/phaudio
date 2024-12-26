@@ -1,5 +1,13 @@
 # @audiorecorder/server
 
+## 0.1.2
+
+### Patch Changes
+
+- Control exceptions and install workers
+- Updated dependencies
+  - @audiorecorder/common@0.1.2
+
 ## 0.1.1
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # @audiorecorder/worker_silero
 
+## 0.1.5
+
+### Patch Changes
+
+- Control exceptions and install workers
+- Updated dependencies
+  - @audiorecorder/common@0.1.2
+
 ## 0.1.4
 
 ### Patch Changes
