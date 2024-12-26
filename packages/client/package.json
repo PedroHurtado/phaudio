@@ -10,7 +10,8 @@
     "preuninstall": "node ./scripts/install-deps.js uninstall"
   },
   "files": [
-    "dist"
+    "dist",
+    "scripts"
   ],
   "author": "",
   "license": "MIT",
