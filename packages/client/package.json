@@ -1,13 +1,13 @@
 {
   "name": "@audiorecorder/client",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "type": "module",
   "scripts": {
-    "preinstall": "cd ../../ && npm install --no-save @audiorecorder/worker_audio @audiorecorder/worker_silero",
-    "preuninstall": "cd ../../ && npm uninstall @audiorecorder/worker_audio @audiorecorder/worker_silero"
+    "preinstall": "npm install --prefix ../../ --no-save @audiorecorder/worker_audio @audiorecorder/worker_silero",
+    "preuninstall": "npm uninstall --prefix ../../ @audiorecorder/worker_audio @audiorecorder/worker_silero"
   },
   "files": [
     "dist"
