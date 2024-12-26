@@ -1,5 +1,11 @@
 # @audiorecorder/client
 
+## 0.1.7
+
+### Patch Changes
+
+- add scripts to files in packages.json
+
 ## 0.1.6
 
 ### Patch Changes
