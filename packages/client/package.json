@@ -6,8 +6,8 @@
   "module": "dist/index.js",
   "type": "module",
   "scripts": {
-    "preinstall": "npm install --prefix ../../ --no-save @audiorecorder/worker_audio @audiorecorder/worker_silero",
-    "preuninstall": "npm uninstall --prefix ../../ @audiorecorder/worker_audio @audiorecorder/worker_silero"
+    "preinstall": "node ./scripts/install-deps.js install",
+    "preuninstall": "node ./scripts/install-deps.js uninstall"
   },
   "files": [
     "dist"

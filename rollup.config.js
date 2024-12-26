@@ -66,6 +66,15 @@ export default [
     ],   
     plugins: [
       del(),
+      copy({
+        hook: "writeBundle",
+        targets: [
+          {
+            src: "scripts/install-deps.js",
+            dest: "packages/client/scripts",
+          },
+        ],
+      }),
       alias({
         entries: [
           {

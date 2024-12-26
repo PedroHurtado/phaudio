@@ -5,6 +5,7 @@ node_modules
 build
 dist
 npm_packages
+packages/client/scripts
 packages/worker_audio/scripts
 packages/worker_silero/scripts
 public
