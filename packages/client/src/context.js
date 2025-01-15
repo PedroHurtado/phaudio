@@ -33,7 +33,7 @@ export class Context {
 
     return new AudioWorkletNode(audioContext, "audio-processor", {
       processorOptions: {
-        options: config.processorOptions,
+        ... config.processorOptions,
       },
     });
   }

@@ -4,14 +4,9 @@
   "description": "",
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "type": "module",
-  "scripts": {
-    "preinstall": "node ./scripts/install-deps.js install",
-    "preuninstall": "node ./scripts/install-deps.js uninstall"
-  },
+  "type": "module", 
   "files": [
-    "dist",
-    "scripts"
+    "dist"    
   ],
   "author": "",
   "license": "MIT",

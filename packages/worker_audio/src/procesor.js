@@ -3,7 +3,7 @@ import { Emiter, Message } from '@audiorecorder/common'
 class AudioProcessor extends AudioWorkletProcessor {
   constructor(options) {
     super();
-    this.active = true;
+    this.active = true;    
     const {targetSampleRate,targetFrameSize}=  options.processorOptions;
     this.resampler = new Resampler({
       nativeSampleRate: sampleRate,
