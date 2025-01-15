@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
 export function authorization(){
-    return function validate(req, res, next) {
+   return (req, res, next)=>{
         const authHeader = req.headers.authorization;
     
         if (!authHeader || !authHeader.startsWith('Bearer ')) {

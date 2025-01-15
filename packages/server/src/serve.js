@@ -38,7 +38,9 @@ addRoute("post", "/login", async (req, res) => {
   }
 });
 
-addRoute("post", "/upload", authorization(), async (req, res) => {
+const aut=authorization();
+const processUpload = async (req, res,next) => {
+  aut(req,res,next)
   const chunks = [];
   await new Promise((resolve, reject) => {
     req.on("data", chunk => chunks.push(chunk));
@@ -58,7 +60,10 @@ addRoute("post", "/upload", authorization(), async (req, res) => {
   await transcript(json, response);
 
   res.json(response);
-});
+}
+
+
+addRoute("post", "/upload", processUpload );
 
 addRoute("head", "/timer", async (_, res) => {
   const date = Date.now();
