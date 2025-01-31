@@ -1,5 +1,11 @@
 # @audiorecorder/common
 
+## 2.0.0
+
+### Major Changes
+
+- Cambio de version
+
 ## 1.0.0
 
 ### Major Changes
