@@ -1,5 +1,16 @@
 # @audiorecorder/worker_silero
 
+## 1.0.0
+
+### Major Changes
+
+- dbb6621: Cambio de version
+
+### Patch Changes
+
+- Updated dependencies [dbb6621]
+  - @audiorecorder/common@1.0.0
+
 ## 0.1.5
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @audiorecorder/common
 
+## 1.0.0
+
+### Major Changes
+
+- dbb6621: Cambio de version
+
 ## 0.1.2
 
 ### Patch Changes
