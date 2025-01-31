@@ -1,5 +1,11 @@
 # @audiorecorder/worker_silero
 
+## 2.1.1
+
+### Patch Changes
+
+- worker silero
+
 ## 2.1.0
 
 ### Minor Changes
