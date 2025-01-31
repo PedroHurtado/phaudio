@@ -1,5 +1,18 @@
 # @audiorecorder/client
 
+## 2.1.0
+
+### Minor Changes
+
+- cambio de versiones
+
+### Patch Changes
+
+- Updated dependencies
+  - @audiorecorder/common@2.1.0
+  - @audiorecorder/worker_audio@2.1.0
+  - @audiorecorder/worker_silero@2.1.0
+
 ## 2.0.0
 
 ### Major Changes
