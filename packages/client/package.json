@@ -4,13 +4,15 @@
   "description": "",
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "type": "module", 
+  "type": "module",
   "files": [
-    "dist"    
+    "dist"
   ],
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@audiorecorder/common": "workspace:^"
+    "@audiorecorder/common": "workspace:^",
+    "@audiorecorder/worker_silero": "workspace:^",
+    "@audiorecorder/worker_audio": "workspace:^"
   }
 }
