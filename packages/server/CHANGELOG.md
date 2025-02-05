@@ -1,5 +1,11 @@
 # @audiorecorder/server
 
+## 2.1.3
+
+### Patch Changes
+
+- Cambio en el headers
+
 ## 2.1.2
 
 ### Patch Changes
