@@ -1,5 +1,11 @@
 # @audiorecorder/server
 
+## 2.1.2
+
+### Patch Changes
+
+- Cambio para capturar env
+
 ## 2.1.1
 
 ### Patch Changes
