@@ -1,5 +1,13 @@
 # @audiorecorder/server
 
+## 2.1.1
+
+### Patch Changes
+
+- Cambios en server
+- Updated dependencies
+  - @audiorecorder/common@2.1.1
+
 ## 2.1.0
 
 ### Minor Changes
