@@ -25,7 +25,7 @@ export async function validate(session) {
     const url = getUrl(session, 'validate')
     const response = await fetch(url, {
         method: 'GET',
-        headers: headers,
+        headers: {...getHeaders()},
     })
     return await processResponse(response)
 
