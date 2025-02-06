@@ -4,7 +4,7 @@ const URL = ()=> process.env.URL_SERVER
 
 const credentials = ()=>btoa(`${process.env.API_USER}:${process.env.API_TOKEN}`)
 
-const getHeaders =()=>  `Authorization: Basic ${credentials()}`
+const getHeaders =()=>  ({Authorization : `Basic ${credentials()}`});
 
 function getUrl(session, path) {
     const { peer_id, room_id, token } = session;

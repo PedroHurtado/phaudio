@@ -1,5 +1,11 @@
 # @audiorecorder/server
 
+## 2.1.5
+
+### Patch Changes
+
+- Change getHeaders
+
 ## 2.1.4
 
 ### Patch Changes
